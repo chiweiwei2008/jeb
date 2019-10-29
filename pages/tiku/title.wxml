@@ -53,13 +53,13 @@
   <button class="loginBtn" bindtap="loginBtnClick">导入</button>
 </view>
 <view>
-    <text>当前为{{tikuname}}题库,总计{{timutotal}}道题，当前为第{{timunumber}}道</text>
+    <text>当前为{{tikuname}}{{timuname}},总计{{timutotal}}道题，当前为第{{timunumber+1}}道题</text>
   </view>
-  <view class="td">题目:</view>
-  <view class="td">选项A</view>
-   <view class="td">选项B</view>
-    <view class="td">选项C</view>
-     <view class="td">选项D</view>
+  <view class="td">题目:{{tigan}}</view>
+  <view class="td">A:{{answerA}}</view>
+   <view class="td">B:{{answerB}}</view>
+    <view class="td">C:{{answerC}}</view>
+     <view class="td">D:{{answerD}}</view>
      <view class="thbar" style="background-color:#fbf9fe">
   <view class="loginBtn"><button  bindtap="loginBtnClick1">上一题</button></view>
    <view class="loginBtn"><button  bindtap="loginBtnClick2">查看答案</button></view>
