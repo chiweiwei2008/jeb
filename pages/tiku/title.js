@@ -31,27 +31,27 @@ Page({
    */
   onLoad: function (options) {
 
-
-      var that=this;
-    //console.log('测试', this.data.tikuname);
-      wx.cloud.init();
-      const db = wx.cloud.database();
-      db.collection('tiku').where({
-        tkname: that.data.tikuname,
-        tmtype: that.data.timuname
-      })
-        .get({
-          success: function (res) {
-            console.log('测试',res.data);
-            that.setData({
-              timulist: res.data,
-            })
-            // wx.setStorage({
-            //  key: 'stimulist',
-            //   data: res.data
-            // });
-          }
+    var that = this;
+    wx.getStorage({ //如果找到缓存，则将选项设为对应的状态
+     key: 'stimulist',
+      success: function (res) {
+        that.setData({
+          timulist: res.data,
+          timutotal: res.data.length,
+          tigan: res.data[that.data.timunumber].tigan,
+          answerA: res.data[that.data.timunumber].answerA,
+          answerB: res.data[that.data.timunumber].answerB,
+          answerC: res.data[that.data.timunumber].answerC,
+          answerD: res.data[that.data.timunumber].answerD,
         })
+        console.log('没有执行！');
+      },
+      fail: function (res) {
+        console.log('没有缓存！');
+      }
+    });
+    
+
    
   },
   //题库名称绑定函数
@@ -89,38 +89,80 @@ Page({
 
   loginBtnClick: function (e) {
     var that = this;
-    this.setData({
-      timunumber: 1,
+   if(that.data.timulist.length==0){
+    wx.cloud.callFunction({
+      // 云函数名称
+      name: 'gettikuData',
+      // 传给云函数的参数
+      data: {
+        tikuname: that.data.tikuname,
+        //timuname: that.data.timuname,
+      },
+      success: function (res) {
+        console.log(res.result.data);
+        //console.log(that.searchDatalist);
+        wx.setStorage({
+          key: 'stimulist',
+          data: res.result.data
+        });
+        that.onLoad();
+
+      },
+      fail: console.error
     });
 
-    wx.getStorage({ 
-      key: stimulist,
-      success: function (res) {
-        that.setData({
-          timulist: res.data
-        }); 
-      },
-       fail: function (res) {
-         wx.cloud.init();
-         const db = wx.cloud.database();
-         db.collection('tiku').where({
-           tkname: tikuname,
-           tmtype: timuname
-         })
-           .get({
-             success: function (res) {
-               
-               wx.setStorage({
-                 key: 'stimulist',
-                 data: res.data
-               });
-             }
-           })
-       }
-  })
+   }
+   
   },
 
-    
+  //上一题按钮函数  
+  loginBtnClick1: function (e) {
+    if (this.data.timunumber!=0){
+      this.setData({
+        timunumber: this.data.timunumber-1,
+        timutotal: this.data.timutotal,
+        tigan: this.data.timulist[this.data.timunumber].tigan,
+        answerA: this.data.timulist[this.data.timunumber].answerA,
+        answerB: this.data.timulist[this.data.timunumber].answerB,
+        answerC: this.data.timulist[this.data.timunumber].answerC,
+        answerD: this.data.timulist[this.data.timunumber].answerD,
+      });
+      this.onLoad();
+    }else{
+      wx.showToast({
+        title: '已经是第一题！',
+        icon: 'none',
+        duration: 3000,
+
+      })
+    };
+
+  },
+
+  //下一题按钮函数  
+  loginBtnClick4: function (e) {
+    if (this.data.timunumber < this.data.timutotal-1) {
+      this.setData({
+        timunumber: this.data.timunumber + 1,
+        timutotal: this.data.timutotal,
+        tigan: this.data.timulist[this.data.timunumber].tigan,
+        answerA: this.data.timulist[this.data.timunumber].answerA,
+        answerB: this.data.timulist[this.data.timunumber].answerB,
+        answerC: this.data.timulist[this.data.timunumber].answerC,
+        answerD: this.data.timulist[this.data.timunumber].answerD,
+      });
+      this.onLoad();
+
+    } else {
+      wx.showToast({
+        title: '已经是最后一题！',
+        icon: 'none',
+        duration: 3000,
+
+      })
+    };
+
+  },
 
 
   /**
