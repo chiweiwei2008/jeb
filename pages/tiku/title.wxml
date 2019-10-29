@@ -1,0 +1,70 @@
+<view class="container">
+  <view>
+    <text>在线题库练习</text>
+  </view>
+<!--选择的题库名称  -->
+  <view class='list-msg'>
+       <view class='list-msg1'>
+          <text>请选择题库:</text>
+       </view>
+<!--下拉框  -->
+      <view class='listblock'>
+         <view class='list-msg2' bindtap='bindShowMsgtiku'>
+               <text>{{tikuname}}</text>
+               <image style='height:30rpx;width:30rpx;'      src='../index/images/timg.jpg'></image>
+         </view>
+<!-- 下拉需要显示的列表 -->
+    <view class="select_box" wx:if="{{selecttiku}}">
+        <view class="select_one" bindtap="mySelecttiku" data-name="变电安规题库">变电安规题库</view>
+        <view class="select_one" bindtap="mySelecttiku" data-name="国网五通题库">国网五通题库</view>
+    </view>
+</view>
+  </view>  
+
+
+<!--选择的题目类型  -->
+  <view class='list-msg'>
+       <view class='list-msg1'>
+          <text>请选题目类型:</text>
+       </view>
+
+
+
+
+<!--下拉框  -->
+      <view class='listblock'>
+         <view class='list-msg2' bindtap='bindShowMsgtimu'>
+               <text>{{timuname}}</text>
+               <image style='height:30rpx;width:30rpx;'      src='../index/images/timg.jpg'></image>
+         </view>
+     
+
+<!-- 下拉需要显示的列表 -->
+    <view class="select_box" wx:if="{{selecttimu}}">
+        <view class="select_one" bindtap="mySelecttimu" data-name="单选题">单选题</view>
+        <view class="select_one" bindtap="mySelecttimu" data-name="多选题">多选题</view>
+         <view class="select_one" bindtap="mySelecttimu" data-name="判断题">判断题</view>
+    </view>
+</view>
+
+  </view>  
+<!-- 查询按钮 -->
+<view class="viewName" style="background-color:#fbf9fe">
+  <button class="loginBtn" bindtap="loginBtnClick">导入</button>
+</view>
+<view>
+    <text>当前为{{tikuname}}题库,总计{{timutotal}}道题，当前为第{{timunumber}}道</text>
+  </view>
+  <view class="td">题目:</view>
+  <view class="td">选项A</view>
+   <view class="td">选项B</view>
+    <view class="td">选项C</view>
+     <view class="td">选项D</view>
+     <view class="thbar" style="background-color:#fbf9fe">
+  <view class="loginBtn"><button  bindtap="loginBtnClick1">上一题</button></view>
+   <view class="loginBtn"><button  bindtap="loginBtnClick2">查看答案</button></view>
+  <view class="loginBtn"><button  bindtap="loginBtnClick3">加入错题库</button></view>
+  <view class="loginBtn"><button  bindtap="loginBtnClick4">下一题</button></view>
+</view>
+
+</view>

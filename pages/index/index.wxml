@@ -1,0 +1,134 @@
+<!--index.wxml-->
+<view class="container">
+<!--变电站名称  -->
+<view class='list-msg'>
+    <view class='list-msg1'>
+        <text>变电站名称:</text>
+    </view>
+<!--下拉框  -->
+<view class='listblock'>
+    <view class='list-msg2' bindtap='bindShowMsgbdz'>
+        <text>{{bdzname}}</text>
+        <image style='height:30rpx;width:30rpx;' src='images/timg.jpg'></image>
+    </view>
+
+<!-- 下拉需要显示的列表 -->
+    <view class="select_box" wx:if="{{selectbdz}}">
+        <view class="select_one" bindtap="mySelectbdz" data-name="1000kV保定站">1000kV保定站</view>
+        <view class="select_one" bindtap="mySelectbdz" data-name="1000kV邢台站">1000kV邢台站</view>
+        <view class="select_one" bindtap="mySelectbdz" data-name="500kV保北站">500kV保北站</view>
+        <view class="select_one" bindtap="mySelectbdz" data-name="500kV沧西站">500kV沧西站</view>
+         <view class="select_one" bindtap="mySelectbdz" data-name="500kV慈云站">500kV慈云站</view>
+         <view class="select_one" bindtap="mySelectbdz" data-name="500kV官路站">500kV官路站</view>
+         <view class="select_one" bindtap="mySelectbdz" data-name="500kV广元站">500kV广元站</view>
+         <view class="select_one" bindtap="mySelectbdz" data-name="500kV桂山站">500kV桂山站</view>
+          <view class="select_one" bindtap="mySelectbdz" data-name="500kV蔺河站">500kV蔺河站</view>
+          <view class="select_one" bindtap="mySelectbdz" data-name="500kV彭村站">500kV彭村站</view>
+         <view class="select_one" bindtap="mySelectbdz" data-name="500kV清苑站">500kV清苑站</view>
+          <view class="select_one" bindtap="mySelectbdz" data-name="500kV深州站">500kV深州站</view>
+           <view class="select_one" bindtap="mySelectbdz" data-name="500kV石北站">500kV石北站</view>
+          <view class="select_one" bindtap="mySelectbdz" data-name="500kV卧牛城站">500kV卧牛城站</view>
+         <view class="select_one" bindtap="mySelectbdz" data-name="500kV武邑站">500kV武邑站</view>
+        <view class="select_one" bindtap="mySelectbdz" data-name="500kV黄骅站">500kV黄骅站</view>
+        <view class="select_one" bindtap="mySelectbdz" data-name="500kV廉州站">500kV廉州站</view>
+         <view class="select_one" bindtap="mySelectbdz" data-name="500kV辛安站">500kV辛安站</view>
+      <view class="select_one" bindtap="mySelectbdz" data-name="500kV辛集站">500kV辛集站</view>
+      <view class="select_one" bindtap="mySelectbdz" data-name="500kV宣惠河站">500kV宣惠河站</view>
+      <view class="select_one" bindtap="mySelectbdz" data-name="500kV冶陶">500kV冶陶站</view>
+      <view class="select_one" bindtap="mySelectbdz" data-name="500kV易水站">500kV易水站</view>
+      <view class="select_one" bindtap="mySelectbdz" data-name="500kV瀛州站">500kV瀛州站</view>
+      <view class="select_one" bindtap="mySelectbdz" data-name="500kV元氏站">500kV元氏站</view>
+      <view class="select_one" bindtap="mySelectbdz" data-name="500kV宗州站">500kV宗州站</view>
+    </view>
+ </view>  
+</view>
+<!--设备类型  -->
+<view class='list-msg'>
+    <view class='list-msg1'>
+        <text>设备类型:</text>
+    </view>
+    <view class='listblock'>
+<!--下拉框  -->
+    <view class='list-msg2' bindtap='bindShowMsg'>
+        <text>{{sblxtype}}</text>
+        <image style='height:30rpx;width:30rpx;' src='images/timg.jpg'></image>
+    </view>
+     
+<!-- 下拉需要显示的列表 -->
+    <view class="select_box" wx:if="{{select}}">
+        <view class="select_one" bindtap="mySelect" data-name="组合电器">组合电器</view>
+        <view class="select_one" bindtap="mySelect" data-name="断路器">断路器</view>
+        <view class="select_one" bindtap="mySelect" data-name="隔离开关">隔离开关</view>
+        <view class="select_one" bindtap="mySelect" data-name="母线">母线</view>
+        <view class="select_one" bindtap="mySelect" data-name="开关柜">开关柜</view>
+        <view class="select_one" bindtap="mySelect" data-name="主变压器">主变压器</view>
+        <view class="select_one" bindtap="mySelect" data-name="避雷器">避雷器</view>
+        <view class="select_one" bindtap="mySelect" data-name="避雷针">避雷针</view>
+        <view class="select_one" bindtap="mySelect" data-name="电抗器">电抗器</view>
+        <view class="select_one" bindtap="mySelect" data-name="电力电容器">电力电容器</view>
+        <view class="select_one" bindtap="mySelect" data-name="电流互感器">电流互感器</view>
+        <view class="select_one" bindtap="mySelect" data-name="电压互感器">电压互感器</view>
+        <view class="select_one" bindtap="mySelect" data-name="放电线圈">放电线圈</view>
+        <view class="select_one" bindtap="mySelect" data-name="接地网">接地网</view>
+        <view class="select_one" bindtap="mySelect" data-name="绝缘子">绝缘子</view>
+        <view class="select_one" bindtap="mySelect" data-name="熔断器">熔断器</view>
+        <view class="select_one" bindtap="mySelect" data-name="所用变">所用变</view>
+        <view class="select_one" bindtap="mySelect" data-name="站内电缆">站内电缆</view>
+        <view class="select_one" bindtap="mySelect" data-name="阻波器">阻波器</view>
+    </view>
+   </view>
+</view>
+<view class="searchtop">
+<view class="search">  
+<view class="itemView"><text>运行编号：</text> </view>
+<view> <input type="text" placeholder="请输入运行编号" class="search-input" name="searchKeywordyxbhid" bindinput="bindKeywordInputyxbhid" value="{{searchKeywordyxbhid}}" />  
+  </view>
+  </view>
+  <view class="search">  
+<view class="itemView"><text>设备型号：</text></view>
+  <view> <input type="text" placeholder="请输入设备型号" class="search-input" name="searchKeywordtypename" bindinput="bindKeywordInputtypename" value="{{searchKeywordtypename}}" />  
+</view>
+</view>
+<view class="viewName" style="background-color:#fbf9fe">
+  <button class="loginBtn" bindtap="loginBtnClick">查询</button>
+</view>
+</view>
+<official-account class="gzhstyle"></official-account>
+<!--搜索显示列表  -->
+<view class="tablelist">
+<view class="tabletitle">
+<view class="tableth">变电站</view>
+<view class="tableth">设备类型</view>
+<view class="tableth">运行编号</view>
+ <view class="tableth">投运日期</view>
+ <view class="tableth">生产厂家</view>
+ <view class="tableth">设备型号</view>
+</view>
+</view>
+<view class="tablelist">
+<view class="search-result">
+    <scroll-view scroll-y="true" bindscrolltolower="searchScrollLower"  class="scrollcss" lower-threshold="50" >
+      <view class="result-item" wx:for="{{searchDatalist}}" wx:key="_id"  wx:for-index="index" wx:for-item="item" >
+    <view class="tr bg-g" wx:if="{{index % 2 == 0}}">
+      <view class="td">{{item.bdzname}}</view>
+      <view class="td">{{item.sblxtype}}</view>
+      <view class="td">{{item.yxbhid}}</view>
+      <view class="td">{{item.touyundate}}</view>
+      <view class="td">{{item.sccjname}}</view>
+      <view class="td">{{item.typename}}</view>
+    </view>
+      <view class="tr" wx:else>
+     <view class="td">{{item.bdzname}}</view>
+      <view class="td">{{item.sblxtype}}</view>
+      <view class="td">{{item.yxbhid}}</view>
+      <view class="td">{{item.touyundate}}</view>
+      <view class="td">{{item.sccjname}}</view>
+      <view class="td">{{item.typename}}</view>
+    </view> 
+      </view>
+      <view class="loading" hidden="{{!searchLoading}}">上拉载入第{{searchPageNum+1}}页</view>
+      <view class="loading complete" hidden="{{!searchLoadingComplete}}">已加载全部</view>
+    </scroll-view>  
+  </view>
+</view>
+</view>

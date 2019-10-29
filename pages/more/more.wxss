@@ -1,0 +1,15 @@
+/* pages/more/more.wxss */
+
+.titletxt{
+width: 100%;
+font-size:18pt; 
+text-align:center;
+position:relative;
+top: 100rpx;
+}
+.jeberweima{
+ width: 100%;
+ text-align:center;
+ position:relative;
+ top: 200rpx;
+}
