@@ -1,0 +1,35 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/tiku/title",
+    "pages/more/more"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#2a579a",
+    "navigationBarTitleText": "检 e 宝",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "position": "top",
+    "backgroundColor": "#2a579a",
+    "color": "#DCEDC8",
+    "selectedColor": "white",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "PMS"
+      },
+      {
+        "pagePath": "pages/tiku/title",
+        "text": "在线题库"
+      },
+      {
+        "pagePath": "pages/more/more",
+        "text": "更多"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}
