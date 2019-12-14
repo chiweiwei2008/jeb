@@ -1,4 +1,5 @@
 // pages/yunxingshuju/yunxingshuju.js
+//实际为缺陷诊断模块，更换九宫格位置后没更改用户名
 const app = getApp();
 var wxCharts = require('../../utils/wxcharts.js');
 var tynxpieChart = null;//缺陷按投运年限
