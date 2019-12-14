@@ -53,7 +53,7 @@ Page({
         that.setData({
          searchDatalist: that.data.searchDatalist,
         });
-        console.log(that.data.searchDatalist);
+        //console.log(that.data.searchDatalist);
         //that.data.searchDatalist = that.data.showDatalist;
         // console.log(that.data.searchDatalist.length);
       },
@@ -69,7 +69,7 @@ Page({
   },
   mySelectbdz(e) {
     var name = e.currentTarget.dataset.name;
-    console.log(e);
+    //console.log(e);
     this.setData({
       bdzname: name,
       selectbdz: false,
