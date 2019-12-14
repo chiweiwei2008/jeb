@@ -1,35 +1,21 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/home/home",
+    "pages/bigdata/bigdata",
     "pages/logs/logs",
     "pages/tiku/title",
-    "pages/more/more"
+    "pages/more/more",
+    "pages/yunxingshuju/yunxingshuju",
+    "pages/yousepu/yousepu",
+    "pages/jixietexing/jixietexing",
+    "pages/jianxiujuece/jianxiujuece"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#2a579a",
-    "navigationBarTitleText": "检 e 宝",
+    "navigationBarTitleText": "检e宝--大数据辅助决策系统",
     "navigationBarTextStyle": "white"
-  },
-  "tabBar": {
-    "position": "top",
-    "backgroundColor": "#2a579a",
-    "color": "#DCEDC8",
-    "selectedColor": "white",
-    "list": [
-      {
-        "pagePath": "pages/index/index",
-        "text": "PMS"
-      },
-      {
-        "pagePath": "pages/tiku/title",
-        "text": "在线题库"
-      },
-      {
-        "pagePath": "pages/more/more",
-        "text": "更多"
-      }
-    ]
   },
   "sitemapLocation": "sitemap.json"
 }

@@ -1,0 +1,17 @@
+<!--pages/jianxiujuece/jianxiujuece.wxml-->
+<view class="container">
+<view style="font-size: 20px;font-weight: 700;"><text>检修决策系统</text></view>
+<p class="biaoti">一、检修建议</p>
+<text space="emsp">  1.廉州500kV变电站500kV 5011断路器缺陷故障次数最多，故障类型为电机储能回路打压故障，建议结合停电计划加强C类检修，检修计划开展前，加强专业巡视，并积极储备备件。</text>
+<p class="biaoti">二、大修、技改建议</p>
+<text space="emsp">  1.蔺河500kV变电站500kV 5043断路器为气动机构断路器，运行时间超20年，故障次数较多，建议申报技改项目进行更换。</text>
+<text space="emsp">  2.廉州500kV变电站220kV 256-5隔离开关运行时间超15年，动静触头接触部分发热缺陷较多，建议申报大修项目进行导电部分更换。</text>
+<p class="biaoti">三、停电计划建议</p>
+<text space="emsp">  1.黄骅500kV变电站500kV 5012断路器，上次检修时间为2012年10月13日，截止当前已超状态检修周期，建议列入2020年年度检修计划。</text>
+<text space="emsp">  2.辛集500kV变电站220kV 213-1隔离开关，上次检修时间为2012年05月29日，截止当前已超状态检修周期，建议列入2020年年度检修计划。</text>
+<p class="biaoti">四、备品备件储备建议</p>
+<text space="emsp">  1.黄骅500kV变电站500kV三菱电机株式会社（型号：500-SFMT-63F）产品，隔离开关无法电动操作缺陷次数较多，缺陷处理需更换分合闸继电器，目前储备数量为2，建议立即采购补充。</text>
+<p class="biaoti">五、配合停送电建议</p>
+<text space="emsp">  1.根据下周检修计划，辛集500kV变电站#2母线有停电检修工作，根据上次倒闸操作情况，母线隔离开关出现分合闸不到位的概率较大，建议安排人员配合停送电操作。</text>
+
+</view>

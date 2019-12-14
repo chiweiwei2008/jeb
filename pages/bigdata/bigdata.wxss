@@ -1,0 +1,22 @@
+@import "../home/home.wxss";
+.containercanvas{
+width: 100%;
+text-align:center;
+}
+.searchBtn{
+ border:1px solid #ccc; 
+ color:rgb(5, 5, 5);
+ font-size:14px;
+ width:80px; 
+}
+.titletext{
+width: 100%;
+font-size:18px;
+font-weight: 700;
+font-family: "Microsoft soft";
+}
+.canvas{
+width: 100%;
+height: 400px;
+text-align:center;
+}

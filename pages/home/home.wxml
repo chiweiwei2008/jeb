@@ -1,0 +1,92 @@
+<!--index.wxml-->
+<view class="container">
+<!--变电站名称  -->
+<view class='list-msg'>
+    <view class='list-msg1'>
+        <text>变电站名称:</text>
+    </view>
+<!--下拉框  -->
+<view class='listblock'>
+    <view class='list-msg2' bindtap='bindShowMsgbdz'>
+        <text>{{bdzname}}</text>
+        <image style='height:30rpx;width:30rpx;' src='images/timg.jpg'></image>
+    </view>
+
+<!-- 下拉需要显示的列表 -->
+    <view class="select_box" wx:if="{{selectbdz}}">
+        <view class="select_one" bindtap="mySelectbdz" data-name="{{item}}" wx:for="{{bdznamelist}}">{{item}}</view>
+    </view>
+ </view>  
+</view>
+<!--设备类型  -->
+<view class='list-msg'>
+    <view class='list-msg1'>
+        <text>设备类型:</text>
+    </view>
+    <view class='listblock'>
+<!--下拉框  -->
+    <view class='list-msg2' bindtap='bindShowMsg'>
+        <text>{{sblxtype}}</text>
+        <image style='height:30rpx;width:30rpx;' src='images/timg.jpg'></image>
+    </view>
+     
+<!-- 下拉需要显示的列表 -->
+    <view class="select_box" wx:if="{{select}}">
+        <view class="select_one" bindtap="mySelect" data-name="{{item}}" wx:for="{{sblxtypelist}}">{{item}}</view>
+    </view>
+   </view>
+</view>
+<view class="searchtop">
+<view class="search">  
+<view class="itemView"><text>运行编号：</text> </view>
+<view> <input type="text" placeholder="请输入运行编号" class="search-input" name="searchKeywordyxbhid" bindinput="bindKeywordInputyxbhid" value="{{searchKeywordyxbhid}}" />  
+  </view>
+  </view>
+  <view class="search">  
+<view class="itemView"><text>设备型号：</text></view>
+  <view> <input type="text" placeholder="请输入设备型号" class="search-input" name="searchKeywordtypename" bindinput="bindKeywordInputtypename" value="{{searchKeywordtypename}}" />  
+</view>
+</view>
+<view class="viewName" style="background-color:#fbf9fe">
+  <button class="loginBtn" bindtap="loginBtnClick">查询</button>
+</view>
+</view>
+<official-account class="gzhstyle"></official-account>
+<!--搜索显示列表  -->
+<view class="tablelist">
+<view class="tabletitle">
+<view class="tableth">变电站</view>
+<view class="tableth">设备类型</view>
+<view class="tableth">运行编号</view>
+ <view class="tableth">投运日期</view>
+ <view class="tableth">生产厂家</view>
+ <view class="tableth">设备型号</view>
+</view>
+</view>
+<view class="tablelist">
+<view class="search-result">
+    <scroll-view scroll-y="true"  bindscrolltolower="searchScrollLower"  class="scrollcss" lower-threshold="50" >
+      <view class="result-item" wx:for="{{searchDatalist}}" wx:key="*this"  wx:for-index="index" wx:for-item="item" >
+    <view class="tr bg-g" wx:if="{{index % 2 == 0}}">
+      <view class="td">{{item.bdzname}}</view>
+      <view class="td">{{item.sblxtype}}</view>
+      <view class="td">{{item.yxbhid}}</view>
+      <view class="td">{{item.touyundate}}</view>
+      <view class="td">{{item.sccjname}}</view>
+      <view class="td">{{item.typename}}</view>
+    </view>
+      <view class="tr" wx:else>
+     <view class="td">{{item.bdzname}}</view>
+      <view class="td">{{item.sblxtype}}</view>
+      <view class="td">{{item.yxbhid}}</view>
+      <view class="td">{{item.touyundate}}</view>
+      <view class="td">{{item.sccjname}}</view>
+      <view class="td">{{item.typename}}</view>
+    </view> 
+      </view>
+      <view class="loading" hidden="{{!searchLoading}}">上拉载入第{{searchPageNum+1}}页</view>
+      <view class="loading complete" hidden="{{!searchLoadingComplete}}">已加载全部</view>
+    </scroll-view>  
+  </view>
+</view>
+</view>

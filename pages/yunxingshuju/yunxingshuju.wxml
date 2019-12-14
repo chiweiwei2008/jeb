@@ -1,0 +1,41 @@
+<!--pages/yunxingshuju/yunxingshuju.wxml-->
+<view class="container">
+   <!--设备类型  -->
+  <view class='list-msg' style="margin-top:20rpx;">
+       <view class='list-msg1'>
+            <text>设备类型:</text>
+       </view>
+       <view class='listblock'>
+        <!--下拉框  -->
+            <view class='list-msg2' bindtap='bindShowMsg'>
+             <text>{{shebeiKeyword}}</text>
+             <image style='height:30rpx;width:30rpx;' src='../home/images/timg.jpg'></image>
+            </view>
+     
+<!-- 下拉需要显示的列表 -->
+ 
+            <cover-view class="select_box" wx:if="{{select}}">
+             <cover-view class="select_one" bindtap="mySelect" data-name="{{item}}" wx:for="{{sblxtypelist}}">{{item}}</cover-view>
+             </cover-view>
+   
+   </view>
+ </view> 
+<view class="viewName" style="background-color:#fbf9fe;">
+  <button class="searchBtn" bindtap="searchBtnClick">分析</button>
+</view>
+ <view class="titletext"><text style="text-align:left;">1.缺陷按投运年限分布情况</text></view>
+<view class="containercanvas">
+    <canvas canvas-id="tynxpieCanvas" class="canvas" bindtouchstart="tynxtouchHandler"></canvas>
+</view>
+</view>
+
+
+<view class="container">
+    <view class="titletext"><text style="text-align:left;">2.缺陷按缺陷类别分布情况</text></view>
+	 <view class="title">
+		{{chartTitle}}
+	 </view>
+    <view class="containercanvas">
+      <canvas canvas-id="columnCanvas" class="canvas" bindtouchstart="touchHandler2"></canvas>
+    </view>
+</view>

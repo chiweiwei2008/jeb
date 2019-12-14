@@ -1,0 +1,64 @@
+<view class="container" >
+   <!--变电站名称  -->
+   <view style="font-size: 18px;font-weight: 700;"><text>断路器机械特性分析系统</text></view>
+     <view class='list-msg'>
+          <view class='list-msg1'>
+                  <text>变电站名称:</text>
+           </view>
+          <view class='listblock'>
+             <!--下拉框  -->
+                 <view class='list-msg2' bindtap='bindShowMsg'>
+                     <text>{{bdzname}}</text>
+                     <image style='height:30rpx;width:30rpx;' src='../home/images/timg.jpg'></image>
+                  </view>
+     
+                    <!-- 下拉需要显示的列表 -->
+                 <cover-view class="select_box" wx:if="{{select}}">
+                       <cover-view class="select_one" bindtap="mySelect" data-name="{{item}}" wx:for="{{bdznamelist}}">{{item}}</cover-view>
+                 </cover-view>
+          </view>
+</view>
+   <!--设备类型  -->
+  <view class='list-msg' >
+       <view class='list-msg1'>
+                   <text>曲线类型:</text>
+       </view>
+       <view class='listblock'>
+                <!--下拉框  -->
+             <view class='list-msg2' bindtap='sbsblxbindShowMsg'>
+                    <text>{{sbsblx}}</text>
+                    <image style='height:30rpx;width:30rpx;' src='../home/images/timg.jpg'></image>
+            </view>
+     
+               <!-- 下拉需要显示的列表 -->
+            <cover-view class="select_box" wx:if="{{sbsblxselect}}">
+                   <cover-view class="select_one" bindtap="sbsblxmySelect" data-name="{{item}}" wx:for="{{sbsblxlist}}">{{item}}</cover-view>
+             </cover-view>
+      </view> 
+ </view> 
+
+  <!--运行编号  -->
+  <view class='list-msg' >
+       <view class='list-msg1'>
+            <text>运行编号:</text>
+       </view>
+       <view class='listblock'>
+        <!--下拉框  -->
+            <view class='list-msg2' bindtap='sbyxbhbindShowMsg'>
+             <text>{{sbyxbh}}</text>
+             <image style='height:30rpx;width:30rpx;' src='../home/images/timg.jpg'></image>
+            </view>
+     
+<!-- 下拉需要显示的列表 -->
+
+            <cover-view class="select_box" wx:if="{{sbyxbhselect}}">
+             <cover-view class="select_one" bindtap="sbyxbhmySelect" data-name="{{item}}" wx:for="{{sbyxbhlist}}">{{item}}</cover-view>
+             </cover-view>
+   </view> 
+ </view> 
+</view>
+
+<view class="container" style="margin-top:20px;">
+    <canvas canvas-id="lineCanvas" disable-scroll="true" class="canvas" bindtouchstart="touchHandler" bindtouchmove="moveHandler" bindtouchend="touchEndHandler"></canvas>
+    <view style="margin-top:30px;text-align:center">拖动图表查看</view>
+</view>

@@ -1,5 +1,49 @@
 /* pages/tiku/title.wxss */
 /*下拉列表*/
+.bdpad{
+   padding: 10rpx 10rpx;
+}
+.btnpad{
+   padding: 200rpx 500rpx;
+}
+.rightanswer{
+  color: green;
+}
+.wronganswer{
+  color: red;
+}
+.textalign{
+    text-align:center;
+    font-size: 18px;
+    font-weight: 700;
+    font-family: "Microsoft soft";
+}
+.viewbutton{
+    display: flex;
+    flex-direction: row; 
+    width: 100%;
+    justify-content: space-between;
+}
+.textfont{
+    font-size: 14px;
+    font-weight: 700;
+}
+.choosepad{
+padding: 20rpx 20rpx;
+}
+.buttonalign{
+   text-align:center;
+   width: 100%;
+}
+ .search-input{
+    width:100%;
+    border: 1px solid #ccc; 
+    border-radius: 3px;
+
+ }
+ .buttonpad{
+padding: 40rpx 0rpx;
+}
 .list-msg {
     display: flex;
     flex-direction: row; 

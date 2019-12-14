@@ -1,208 +1,170 @@
-//index.js
-//获取应用实例
-const app = getApp();
+// pages/index/index.js
 Page({
+
+  //swiper
+  onShareAppMessage() {
+    return {
+      title: 'swiper',
+      path: 'page/component/pages/swiper/swiper'
+    }
+  },
+
+  changeIndicatorDots() {
+    this.setData({
+      indicatorDots: !this.data.indicatorDots
+    })
+  },
+
+  changeAutoplay() {
+    this.setData({
+      autoplay: !this.data.autoplay
+    })
+  },
+
+  intervalChange(e) {
+    this.setData({
+      interval: e.detail.value
+    })
+  },
+
+  durationChange(e) {
+    this.setData({
+      duration: e.detail.value
+    })
+  },
+  imageLoad: function () {
+    this.setData({
+      imageWidth: wx.getSystemInfoSync().windowWidth,//图片宽度 
+    })
+  },
+  /**
+   * 页面的初始数据
+   */
   data: {
-    showDatalist:[],
-    searchDatalist: [],
-    select:false,
-    sblxtype:'断路器',
-    bdzname: '1000kV保定站',
-    selectbdz: false,
-    searchKeywordyxbhid:'',
-    searchKeywordtypename:'',
-    searchLoading: true, //"上拉加载"的变量，默认false，隐藏
-    searchLoadingComplete: false , //“没有数据”的变量，默认false，隐藏
-    searchPageNum: 1,   // 设置加载的第几次，默认是第一次
-    callbackcount: 20,      //返回数据的个数
-    pmslist : []
-    
-  },
+   //swiper
+    background: [
+'cloud://pmis-4c63d.706d-pmis-4c63d-1300406220/jxgs/banner/bnner1.jpg', 'cloud://pmis-4c63d.706d-pmis-4c63d-1300406220/jxgs/banner/bnner2.jpg', 'cloud://pmis-4c63d.706d-pmis-4c63d-1300406220/jxgs/banner/bnner3.jpg'
+],
+    indicatorDots: true,
+    vertical: false,
+    autoplay: true,
+    interval: 5000,
+    duration: 500,
 
-  onLoad: function () {
-    wx.cloud.init();
-    var that = this;
-    if (this.data.searchPageNum == 1)this.data.searchDatalist=[];
-    wx.cloud.callFunction({
-      // 云函数名称
-      name: 'getData',
-      // 传给云函数的参数
-      data: {
-       bdzname:that.data.bdzname,
-       sblxtype:that.data.sblxtype,
-       searchKeywordyxbhid: that.data.searchKeywordyxbhid,
-       searchKeywordtypename:that.data.searchKeywordtypename
+    //九宫格布局数据
+    routers: [
+      {
+        name: '台账查询',
+        url: '../home/home',
+        icon: 'img/1.png',
+        code: '10'
       },
-      success: function (res) {
-        console.log(res.result) ;
-        //console.log(that.searchDatalist);
-        that.setData({
-          showDatalist: res.result.data,
-          });
-        //that.searchScrollLower();
-       if(that.data.searchPageNum==1){
-         for (var i = 0; i < that.data.callbackcount;i++){
-          that.data.searchDatalist[i]=that.data.showDatalist[i];
-        }
-
-        } 
-       
-        that.setData({
-         searchDatalist: that.data.searchDatalist,
-        });
-        console.log(that.data.searchDatalist);
-        //that.data.searchDatalist = that.data.showDatalist;
-        // console.log(that.data.searchDatalist.length);
+      {
+        name: '运行数据分析',
+        url: '../bigdata/bigdata',
+        icon: 'img/2.png',
+        code: '11'
       },
-      fail: console.error
-    });
-  },
-  //变电站名称绑定函数
-  bindShowMsgbdz() {
-    this.setData({
-      selectbdz: !this.data.selectbdz
-    });
-
-  },
-  mySelectbdz(e) {
-    var name = e.currentTarget.dataset.name;
-    this.setData({
-      bdzname: name,
-      selectbdz: false,
-      //showDatalist:searchDatalist
-    });
-  },
-  //设备类型绑定函数
-  bindShowMsg() {
-    this.setData({
-      select: !this.data.select
-    });
-  
-  },
-  mySelect(e) {
-    var name = e.currentTarget.dataset.name;
-    this.setData({
-      sblxtype: name,
-      select: false,
-      //showDatalist:searchDatalist
-    });
-    //this.onLoad();
-  },
-//运行编号赋值
-  bindKeywordInputyxbhid: function (e) {
-    var nameyxbhid = e.detail.value;
-    this.setData({
-      searchKeywordyxbhid: nameyxbhid,
-    })}
-,
-  //设备型号赋值
-  bindKeywordInputtypename: function (e) {
-    var nametypename = e.detail.value;
-    this.setData({
-      searchKeywordtypename: nametypename,
-    })
-  }
-  ,
-  loginBtnClick:function(e){
-    this.setData({
-      searchPageNum:1,
-      searchLoading:false,
-      searchLoadingComplete:false,
-      bdzname:this.data.bdzname,
-      sblxtype: this.data.sblxtype,
-      searchKeywordyxbhid: this.data.searchKeywordyxbhid,
-      searchKeywordtypename: this.data.searchKeywordtypename
-
-    });
-    //判断查询项是否为空
-    if ((this.data.searchKeywordyxbhid != '') | (this.data.searchKeywordtypename != '')){
-    wx.cloud.init();
-    const db = wx.cloud.database();
-    var that=this;
-      wx.cloud.callFunction({
-        // 云函数名称
-        name: 'getData',
-        // 传给云函数的参数
-        data: {
-          bdzname: that.data.bdzname,
-          sblxtype: that.data.sblxtype,
-          searchKeywordyxbhid: that.data.searchKeywordyxbhid,
-          searchKeywordtypename: that.data.searchKeywordtypename
-        },
-        success: function (res) {
-          console.log(res.result);
-          //console.log(that.searchDatalist);
-          that.setData({
-            pmslist : res.result.data,
-          });
-          console.log(that.data.pmslist.length);
-            that.onLoad();
-        },
-        fail:function() {
-          wx.showToast({
-              title: '不存在该设备！请检查查询条件，运行编号和设备型号需与被查询对象一致。',
-              icon: 'none',
-              duration: 3000,
-
-        })}
-
-      });
-      //console.log(this.data.pmslist.length);
+      {
+        name: '缺陷诊断',
+        url: '../yunxingshuju/yunxingshuju',
+        icon: 'img/3.png',
+        code: '10'
+      },
+      {
+        name: 'SF6在线监测',
+        url: '../yali/yali',
+        icon: 'img/4.png',
+        code: '11'
+      },
+      {
+        name: '油色谱',
+        url: '../yousepu/yousepu',
+        icon: 'img/8.png',
+        code: '10'
+      },
+      {
+        name: '机械特性',
+        url: '../jixietexing/jixietexing',
+        icon: 'img/6.png',
+        code: '11'
+      },
+      {
+        name: '检修决策',
+        url: '../jianxiujuece/jianxiujuece',
+        icon: 'img/7.png',
+        code: '11'
+      },
+      {
+        name: '知识问答',
+        url: '../tiku/title',
+        icon: 'img/5.png',
+        code: '11'
+      },
+      {
+        name: 'more',
+        url: '../more/more',
+        icon: 'img/9.jpg',
+        code: '11'
+      }
       
-    }
-    else
-    {
-      this.onLoad();
-    }
+    ]
+
   },
 
-  /*
-  searchScrollLower: function () {
-    this.setData({
-      searchabc:999999,
-    })
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+
+  },
+  
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面隐藏
+   */
+  onHide: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload: function () {
+
+  },
+
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function () {
+
+  },
+
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function () {
+
+  },
+
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
+
   }
-  */
-
-  searchScrollLower: function () {
-    let that = this;
-    var total = this.data.showDatalist.length;
-    var pagetotal = Math.ceil(total / that.data.callbackcount)-1;
-   
-    var j=0;
-    var loadMore=false;
-    if ((that.data.searchPageNum <= pagetotal ) && (that.data.searchPageNum>=1))
-    {
-      var newarray=[];
-      for (var i = that.data.searchPageNum * that.data.callbackcount; i < (that.data.searchPageNum + 1) * that.data.callbackcount;i++)        {
-     if(i<total){
-       newarray[j]=that.data.showDatalist[i];
-       j++;
-       }
-        }
-      that.setData({
-        searchPageNum: that.data.searchPageNum + 1,  //每次触发上拉事件，把searchPageNum
-        searchLoading: true,
-        searchLoadingComplete: false,
-        searchDatalist: that.data.searchDatalist.concat(newarray),
-        loadMore:true
-                  });
-      
-     }
-    if (that.data.searchPageNum >pagetotal)
-    {
-
-    that.setData({
-      searchLoadingComplete:true,
-      searchLoading: false,
-      //loadMore: false
-    })
-        
-    }
-    if(loadMore==true)that.onLoad();
-  },
-  
-
-
-  
 })

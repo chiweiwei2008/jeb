@@ -1,0 +1,8 @@
+/* pages/jianxiujuece/jianxiujuece.wxss */
+.biaoti{
+  text-align:left;
+  width: 100%;
+  font-size:18px;
+  font-weight: 700;
+  font-family: "Microsoft soft";
+}

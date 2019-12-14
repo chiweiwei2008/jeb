@@ -1,0 +1,7 @@
+<!--bigdata.wxml-->
+<view class="container">
+	<view class="title"  style="font-size: 18px;font-weight: 700;">
+		{{chartTitle}}
+	</view>
+    <canvas canvas-id="columnCanvas" class="canvas" ></canvas>
+</view>

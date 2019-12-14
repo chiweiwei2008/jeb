@@ -1,5 +1,7 @@
-<view class="container">
-  <view>
+
+<view class="page">
+<view class="page__hd">
+  <view class="textalign">
     <text>在线题库练习</text>
   </view>
 <!--选择的题库名称  -->
@@ -11,12 +13,13 @@
       <view class='listblock'>
          <view class='list-msg2' bindtap='bindShowMsgtiku'>
                <text>{{tikuname}}</text>
-               <image style='height:30rpx;width:30rpx;'      src='../index/images/timg.jpg'></image>
+               <image style='height:30rpx;width:30rpx;'      src='../home/images/timg.jpg'></image>
          </view>
 <!-- 下拉需要显示的列表 -->
     <view class="select_box" wx:if="{{selecttiku}}">
         <view class="select_one" bindtap="mySelecttiku" data-name="变电安规题库">变电安规题库</view>
         <view class="select_one" bindtap="mySelecttiku" data-name="国网五通题库">国网五通题库</view>
+        <view class="select_one" bindtap="mySelecttiku" data-name="银行业-网点负责人考试习题">银行业-网点负责人考试习题</view>
     </view>
 </view>
   </view>  
@@ -35,7 +38,7 @@
       <view class='listblock'>
          <view class='list-msg2' bindtap='bindShowMsgtimu'>
                <text>{{timuname}}</text>
-               <image style='height:30rpx;width:30rpx;'      src='../index/images/timg.jpg'></image>
+               <image style='height:30rpx;width:30rpx;'      src='../home/images/timg.jpg'></image>
          </view>
      
 
@@ -48,23 +51,111 @@
 </view>
 
   </view>  
-<!-- 查询按钮 -->
+<!-- 导入缓存按钮 -->
+<view class="viewbutton">
 <view class="viewName" style="background-color:#fbf9fe">
-  <button class="loginBtn" bindtap="loginBtnClick">导入</button>
+  <button  class="weui-btn mini-btn" type="default" size="mini" bindtap="loginBtnClick">导入题库</button>
 </view>
+<!-- 清空缓存按钮 -->
+<view class="viewName" style="background-color:#fbf9fe">
+  <button  class="weui-btn mini-btn" type="default" size="mini" bindtap="loginBtnClickclear">清空题库</button>
+</view>
+</view>
+</view>
+
+<view class="page__bd bdpad">
 <view>
-    <text>当前为{{tikuname}}{{timuname}},总计{{timutotal}}道题，当前为第{{timunumber+1}}道题</text>
+    <text class="textfont"> 《{{tikuname}}》-{{timuname}}-第{{timutotal==0?0:timunumber+1}}/ {{timutotal}}题：</text>
   </view>
-  <view class="td">题目:{{tigan}}</view>
-  <view class="td">A:{{answerA}}</view>
-   <view class="td">B:{{answerB}}</view>
-    <view class="td">C:{{answerC}}</view>
-     <view class="td">D:{{answerD}}</view>
-     <view class="thbar" style="background-color:#fbf9fe">
-  <view class="loginBtn"><button  bindtap="loginBtnClick1">上一题</button></view>
-   <view class="loginBtn"><button  bindtap="loginBtnClick2">查看答案</button></view>
-  <view class="loginBtn"><button  bindtap="loginBtnClick3">加入错题库</button></view>
-  <view class="loginBtn"><button  bindtap="loginBtnClick4">下一题</button></view>
+<!-- 题目为单选题时显示 -->
+  <view  wx:if="{{timuname==='单选题'}}">
+  <radio-group  bindchange="radioChange">
+   <label style="display: flex">
+           <text decode="{{true}}">&emsp;&emsp;{{tigan}}</text>
+        </label>
+         <label wx:if="{{answerA!==''}}" style="display: flex"  class="{{(( chooseanswer==='A' && answerRoW)||(answertxt==='A' && answerRoW!==''))?'rightanswer':((chooseanswer!==answertxt)&&(answerRoW!==''))?'wronganswer':''}} choosepad">
+             <radio value="A" checked="{{clearchecked}}"/>A:{{answerA}}
+        </label>
+        <label wx:if="{{answerB!==''}}" style="display: flex" class="{{(( chooseanswer==='B' && answerRoW)||(answertxt==='B' && answerRoW!==''))?'rightanswer':((chooseanswer!==answertxt)&&(answerRoW!==''))?'wronganswer':''}} choosepad">
+             <radio value="B"  checked="{{clearchecked}}"/>B:{{answerB}}
+        </label>
+         <label wx:if="{{answerC!==''}}" style="display: flex" class="{{(( chooseanswer==='C' && answerRoW)||(answertxt==='C' && answerRoW!==''))?'rightanswer':((chooseanswer!==answertxt)&&(answerRoW!==''))?'wronganswer':''}} choosepad">
+             <radio value="C"   checked="{{clearchecked}}"/>C:{{answerC}}
+        </label>
+          <label wx:if="{{answerD!==''}}" style="display: flex" class="{{(( chooseanswer==='D' && answerRoW)||(answertxt==='D' && answerRoW!==''))?'rightanswer':((chooseanswer!==answertxt)&&(answerRoW!==''))?'wronganswer':''}} choosepad">
+             <radio value="D"  checked="{{clearchecked}}"/>D:{{answerD}}
+        </label>
+         <label wx:if="{{answerE!==''}}"  style="display: flex" class="{{(( chooseanswer==='E' && answerRoW)||(answertxt==='E' && answerRoW!==''))?'rightanswer':((chooseanswer!==answertxt)&&(answerRoW!==''))?'wronganswer':''}} choosepad">
+             <radio value="E"  checked="{{clearchecked}}"/>E:{{answerE}}
+        </label>
+         <label wx:if="{{answerF!==''}}"  style="display: flex" class="{{(( chooseanswer==='F' && answerRoW)||(answertxt==='F' && answerRoW!==''))?'rightanswer':((chooseanswer!==answertxt)&&(answerRoW!==''))?'wronganswer':''}} choosepad">
+             <radio value="F"  checked="{{clearchecked}}"/>F:{{answerF}}
+        </label>
+         <label wx:if="{{answerG!==''}}"  style="display: flex" class="{{(( chooseanswer==='G' && answerRoW)||(answertxt==='G' && answerRoW!==''))?'rightanswer':((chooseanswer!==answertxt)&&(answerRoW!==''))?'wronganswer':''}} choosepad">
+             <radio value="G"  checked="{{clearchecked}}"/>G:{{answerG}}
+        </label>
+         <label wx:if="{{answerH!==''}}"  style="display: flex" class="{{(( chooseanswer==='H' && answerRoW)||(answertxt==='H' && answerRoW!==''))?'rightanswer':((chooseanswer!==answertxt)&&(answerRoW!==''))?'wronganswer':''}} choosepad">
+             <radio value="H"  checked="{{clearchecked}}"/>H:{{answerH}}
+        </label>
+  </radio-group>
+</view>
+<!-- 题目为判断题时显示 -->
+<view  wx:if="{{timuname==='判断题'}}">
+ <radio-group  bindchange="radioChange">
+   <label style="display: flex">
+           <text decode="{{true}}">&emsp;&emsp;{{tigan}}</text>
+        </label>
+         <label  wx:if="{{answerA!==''}}" style="display: flex"  class="{{(( chooseanswer==='正确' && answerRoW)||(answertxt==='正确' && answerRoW!==''))?'rightanswer':((chooseanswer!==answertxt)&&(answerRoW!==''))?'wronganswer':''}} choosepad">
+             <radio value="正确" checked="{{clearchecked}}"/>{{answerA}}
+        </label>
+        <label wx:if="{{answerB!==''}}" style="display: flex" class="{{(( chooseanswer==='错误' && answerRoW)||(answertxt==='错误' && answerRoW!==''))?'rightanswer':((chooseanswer!==answertxt)&&(answerRoW!==''))?'wronganswer':''}} choosepad">
+             <radio value="错误"  checked="{{clearchecked}}"/>{{answerB}}
+        </label>
+  </radio-group>
+</view>
+<!-- 题目为多选题时显示 -->
+<view  wx:if="{{timuname==='多选题'}}">
+
+<checkbox-group bindchange="checkboxChange">
+<label style="display: flex">  <text decode="{{true}}">&emsp;&emsp;{{tigan}}</text> </label>
+       <label wx:if="{{answerA!==''}}" style="display: flex;"  class="{{chooseanswerA}} choosepad">
+             <checkbox  value="A" checked="{{clearchecked}}"></checkbox>A:{{answerA}}  
+        </label>
+        <label wx:if="{{answerB!==''}}" style="display: flex"  class="{{chooseanswerB}} choosepad">
+             <checkbox value="B" checked="{{clearchecked}}"></checkbox>B:{{answerB}}  
+        </label>
+         <label wx:if="{{answerC!==''}}" style="display: flex"  class="{{chooseanswerC}} choosepad">
+             <checkbox value="C" checked="{{clearchecked}}"></checkbox>C:{{answerC}}  
+        </label>
+          <label wx:if="{{answerD!==''}}" style="display: flex" class="{{chooseanswerD}} choosepad">
+             <checkbox value="D" checked="{{clearchecked}}"></checkbox>D:{{answerD}}  
+        </label>
+         <label  wx:if="{{answerE!==''}}" style="display: flex" class="{{chooseanswerE}} choosepad">
+             <checkbox value="E" checked="{{clearchecked}}"></checkbox>E:{{answerE}}  
+        </label>
+         <label  wx:if="{{answerF!==''}}" style="display: flex" class="{{chooseanswerF}} choosepad">
+             <checkbox value="F" checked="{{clearchecked}}"></checkbox>F:{{answerF}}  
+        </label>
+         <label  wx:if="{{answerG!==''}}" style="display: flex" class="{{chooseanswerG}} choosepad">
+             <checkbox value="G" checked="{{clearchecked}}"></checkbox>G:{{answerG}}  
+        </label>
+         <label  wx:if="{{answerH!==''}}" style="display: flex" class="{{chooseanswerH}} choosepad">
+             <checkbox value="H" checked="{{clearchecked}}"></checkbox>H:{{answerH}}  
+        </label>
+</checkbox-group>
+</view>
+<view class="button-sp-area buttonalign buttonpad">
+  <button  class="weui-btn mini-btn " type="default" size="mini" bindtap="loginBtnClick1">上一题</button>
+   <text decode="{{true}}">&emsp;</text>
+  <button  class="weui-btn mini-btn " type="default" size="mini" bindtap="loginBtnClick2">答案</button>
+   <text decode="{{true}}">&emsp;</text>
+  <button  class="weui-btn mini-btn " type="default" size="mini" bindtap="jumploginBtnClick">跳转</button>
+   <text decode="{{true}}">&emsp;</text>
+  <button  class="weui-btn mini-btn " type="default" size="mini" bindtap="loginBtnClick4">下一题</button>
+  </view>
+ <view class="button-sp-area buttonalign">     
+ <input class="weui-input search-input" placeholder="请输入跳转题目编号" name="searchtimunumber" bindinput="bindKeywordInput" />
+</view>
 </view>
 
 </view>
