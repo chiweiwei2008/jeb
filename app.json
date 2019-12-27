@@ -1,16 +1,33 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/home/home",
-    "pages/bigdata/bigdata",
+    "pages/pms/pms",
+    "pages/yunxingfenxi/yunxingfenxi",
     "pages/logs/logs",
     "pages/tiku/title",
     "pages/more/more",
-    "pages/yunxingshuju/yunxingshuju",
+    "pages/quexianfenxi/quexianfenxi",
     "pages/yousepu/yousepu",
     "pages/jixietexing/jixietexing",
-    "pages/jianxiujuece/jianxiujuece"
+    "pages/jianxiujuece/jianxiujuece",
+    "pages/pmsitem/pmsitem",
+    "pages/user/user"
   ],
+  "tabBar": {
+    "color": "#a9b7b7",
+    "selectedColor": "#11cd6e",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/user/user",
+        "text": "个人中心"
+      }
+    ]
+  },
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#2a579a",
