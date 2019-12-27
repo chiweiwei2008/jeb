@@ -61,13 +61,13 @@ Page({
       },
       {
         name: '运行数据分析',
-        url: '../bigdata/bigdata',
+        url: '../yunxingfenxi/yunxingfenxi',
         icon: 'img/2.png',
         code: '11'
       },
       {
-        name: '缺陷诊断',
-        url: '../yunxingshuju/yunxingshuju',
+        name: '缺陷分析',
+        url: '../quexianfenxi/quexianfenxi',
         icon: 'img/3.png',
         code: '10'
       },
@@ -96,7 +96,7 @@ Page({
         code: '11'
       },
       {
-        name: '知识问答',
+        name: '在线测试',
         url: '../tiku/title',
         icon: 'img/5.png',
         code: '11'

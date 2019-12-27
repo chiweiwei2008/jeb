@@ -15,7 +15,7 @@
 <!-- 下拉需要显示的列表 -->
  
             <cover-view class="select_box" wx:if="{{select}}">
-             <cover-view class="select_one" bindtap="mySelect" data-name="{{item}}" wx:for="{{sblxtypelist}}">{{item}}</cover-view>
+             <cover-view class="select_one" bindtap="mySelect" data-name="{{item}}" wx:key="*this" wx:for="{{sblxtypelist}}">{{item}}</cover-view>
              </cover-view>
    
    </view>

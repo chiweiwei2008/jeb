@@ -1,6 +1,6 @@
 // pages/bigdata/bigdata.js
 //画图插件
-const app = getApp();
+//const app = getApp();
 var wxCharts = require('../../utils/wxcharts.js');
 var columnChart = null;
 var chartData = {
@@ -20,7 +20,7 @@ Page({
   data: {
     chartTitle: '国网河北检修公司在运设备分布情况',
     isMainChartDisplay: true,
-    shebeilist: app.globalData.sblxtypelist,
+    shebeilist: [],
     chartDatalist: [],
   },
 
@@ -42,10 +42,11 @@ Page({
        
       },
       success: function (res) { 
-
-        
-        that.data.chartDatalist=res.result;
-        //console.log(that.data.chartDatalist);
+      //赋值
+        for(let i=0; i< res.result.length; i++){
+          that.data.shebeilist[i]=res.result[i].sbsblx;
+          that.data.chartDatalist[i] = res.result[i].total;
+        };
         var windowWidth = 320;
         try {
           var res = wx.getSystemInfoSync();

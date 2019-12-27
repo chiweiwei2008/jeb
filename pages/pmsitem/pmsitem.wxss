@@ -1,0 +1,22 @@
+/* pages/pmsitem/pmsitem.wxss */
+@import "../pms/pms.wxss";
+.tr{
+  padding-left: 2rpx;
+  padding-right: 2rpx;
+}
+.td{
+  width:70%;
+}
+.std{
+   width:30%;
+}
+.txttitle{
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 20rpx;
+  text-align: center;
+}
+.tablelist{
+   width: 100%;
+   font-size:10pt; 
+}

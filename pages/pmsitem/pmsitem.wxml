@@ -1,0 +1,163 @@
+<!--pages/pmsitem/pmsitem.wxml-->
+<view class="container">
+  <view class="txttitle"><text>{{searchDatalist.bdzname}}{{searchDatalist.sbmc}}详细信息</text>
+  </view>
+  <view class="tablelist">
+    <view class="search-result">
+      <scroll-view scroll-y="true" class="scrollcss" lower-threshold="50">
+          <view class="tr bg-g">
+            <view class="td std">变电站名称：</view>
+            <view class="td">{{searchDatalist.bdzname}}</view>
+          </view> 
+          <view class="tr bg-g">
+            <view class="td std">变电站电压等级：</view>
+            <view class="td">{{searchDatalist.ssbdzdylevel}}</view>
+          </view>
+           <view class="tr bg-g">
+            <view class="td std">设备电压等级：</view>
+            <view class="td">{{searchDatalist.dylevel}}</view>
+          </view>
+          <view class="tr bg-g">
+            <view class="td std">设备类型：</view>
+            <view class="td">{{searchDatalist.sblxtype}}</view>
+          </view>
+          <view class="tr bg-g">
+            <view class="td std">设备类型编码：</view>
+            <view class="td">{{searchDatalist.sblxbm}}</view>
+          </view>
+          <view class="tr bg-g">
+            <view class="td std">间隔名称：</view>
+            <view class="td">{{searchDatalist.jgname}}</view>
+          </view>
+           <view class="tr bg-g">
+            <view class="td std">设备名称：</view>
+            <view class="td">{{searchDatalist.sbmc}}</view>
+          </view>
+          <view class="tr bg-g">
+            <view class="td std">运行编号：</view>
+            <view class="td">{{searchDatalist.yxbhid}}</view>
+          </view>
+          <view class="tr bg-g">
+            <view class="td std">投运日期：</view>
+            <view class="td">{{searchDatalist.touyundate}}</view>
+          </view>
+           <view class="tr bg-g">
+            <view class="td std">设备状态：</view>
+            <view class="td">{{searchDatalist.sbzt}}</view>
+          </view>
+          <view class="tr bg-g">
+            <view class="td std">生产厂家：</view>
+            <view class="td">{{searchDatalist.sccjname}}</view>
+          </view>
+          <view class="tr bg-g">
+            <view class="td std">设备型号：</view>
+            <view class="td">{{searchDatalist.typename}}</view>
+          </view>
+          <view class="tr bg-g">
+            <view class="td std">出厂日期：</view>
+            <view class="td">{{searchDatalist.chuchangdate}}</view>
+          </view>
+          <view class="tr bg-g">
+            <view class="td std">出厂编号：</view>
+            <view class="td">{{searchDatalist.chuchangid}}</view>
+          </view>
+          <view class="tr bg-g">
+            <view class="td std">相数：</view>
+            <view class="td">{{searchDatalist.xiangshu}}</view>
+          </view>
+          <view class="tr bg-g">
+            <view class="td std">相别：</view>
+            <view class="td">{{searchDatalist.xiangbie}}</view>
+          </view>
+          <view class="tr bg-g">
+            <view class="td std">维护单位：</view>
+            <view class="td">{{searchDatalist.yunweidanwei}}</view>
+          </view>
+           <view class="tr bg-g">
+            <view class="td std">专业：</view>
+            <view class="td">{{searchDatalist.zhuanye}}</view>
+          </view>
+           <view class="tr bg-g">
+            <view class="td std">维护班组：</view>
+            <view class="td">{{searchDatalist.whbanzu}}</view>
+          </view>
+           <view class="tr bg-g">
+            <view class="td std">设备主人：</view>
+            <view class="td">{{searchDatalist.shebeizhuren}}</view>
+          </view>
+          <view class="tr bg-g">
+            <view class="td std">设备增加方式：</view>
+            <view class="td">{{searchDatalist.sbzjfangshi}}</view>
+          </view>
+          <view class="tr bg-g">
+            <view class="td std">工程编号：</view>
+            <view class="td">{{searchDatalist.gcbh}}</view>
+          </view>
+          <view class="tr bg-g">
+            <view class="td std">工程名称：</view>
+            <view class="td">{{searchDatalist.gchengname}}</view>
+          </view>
+          <view class="tr bg-g">
+            <view class="td std">PMS编号：</view>
+            <view class="td">{{searchDatalist.pmid}}</view>
+          </view>
+           <view class="tr bg-g">
+            <view class="td std">设备编号：</view>
+            <view class="td">{{searchDatalist.shebeiid}}</view>
+          </view>
+          <view class="tr bg-g">
+            <view class="td std">设备名称编号：</view>
+            <view class="td">{{searchDatalist.shebeinameid}}</view>
+          </view>
+          <view class="tr bg-g">
+            <view class="td std">obj_id：</view>
+            <view class="td">{{searchDatalist.obj_id}}</view>
+          </view>
+           <view class="tr bg-g">
+            <view class="td std">dqmpyxk_id：</view>
+            <view class="td">{{searchDatalist.dqmpyxkid}}</view>
+          </view>
+          <view class="tr bg-g">
+            <view class="td std">站房编号：</view>
+            <view class="td">{{searchDatalist.zfangid}}</view>
+          </view>
+          <view class="tr bg-g">
+            <view class="td std">资产单位：</view>
+            <view class="td">{{searchDatalist.zcdanwei}}</view>
+          </view>
+           <view class="tr bg-g">
+            <view class="td std">资产类型：</view>
+            <view class="td">{{searchDatalist.zctype}}</view>
+          </view>
+          <view class="tr bg-g">
+            <view class="td std">资产编号：</view>
+            <view class="td">{{searchDatalist.zichanid}}</view>
+          </view>
+          <view class="tr bg-g">
+            <view class="td std">国家：</view>
+            <view class="td">{{searchDatalist.country}}</view>
+          </view>
+          <view class="tr bg-g">
+            <view class="td std">所属地市：</view>
+            <view class="td">{{searchDatalist.suoshudishi}}</view>
+          </view>
+          <view class="tr bg-g">
+            <view class="td std">功能位置：</view>
+            <view class="td">{{searchDatalist.gongnengweizhi}}</view>
+          </view>
+          <view class="tr bg-g">
+            <view class="td std">电压等级：</view>
+            <view class="td">{{searchDatalist.dydjname}}</view>
+          </view>
+          <view class="tr bg-g">
+            <view class="td std">电压等级代码：</view>
+            <view class="td">{{searchDatalist.dydengjidaima}}</view>
+          </view>
+         <view class="tr bg-g">
+            <view class="td std">登记时间：</view>
+            <view class="td">{{searchDatalist.dengjitime}}</view>
+          </view>
+      </scroll-view>
+    </view>
+  </view>
+</view>

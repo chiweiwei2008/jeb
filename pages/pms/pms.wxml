@@ -14,7 +14,7 @@
 
 <!-- 下拉需要显示的列表 -->
     <view class="select_box" wx:if="{{selectbdz}}">
-        <view class="select_one" bindtap="mySelectbdz" data-name="{{item}}" wx:for="{{bdznamelist}}">{{item}}</view>
+        <view class="select_one" bindtap="mySelectbdz" data-name="{{item}}" wx:for-index="index" wx:key="index" wx:for="{{bdznamelist}}">{{item}}</view>
     </view>
  </view>  
 </view>
@@ -32,7 +32,7 @@
      
 <!-- 下拉需要显示的列表 -->
     <view class="select_box" wx:if="{{select}}">
-        <view class="select_one" bindtap="mySelect" data-name="{{item}}" wx:for="{{sblxtypelist}}">{{item}}</view>
+        <view class="select_one" bindtap="mySelect" data-name="{{item}}" wx:for-index="index" wx:key="index" wx:for="{{sblxtypelist}}">{{item}}</view>
     </view>
    </view>
 </view>
@@ -66,7 +66,7 @@
 <view class="tablelist">
 <view class="search-result">
     <scroll-view scroll-y="true"  bindscrolltolower="searchScrollLower"  class="scrollcss" lower-threshold="50" >
-      <view class="result-item" wx:for="{{searchDatalist}}" wx:key="*this"  wx:for-index="index" wx:for-item="item" >
+      <view class="result-item" wx:for="{{searchDatalist}}" wx:key="_id"  wx:for-index="index" wx:for-item="item" data-index="{{index}}" bindtap="clickItem">
     <view class="tr bg-g" wx:if="{{index % 2 == 0}}">
       <view class="td">{{item.bdzname}}</view>
       <view class="td">{{item.sblxtype}}</view>

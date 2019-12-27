@@ -2,5 +2,5 @@
         <text>扫描关注检e宝公众号</text>
     </view>
 <view class='jeberweima'>
-<image  src='../home/images/jeb.jpg' style='height:350rpx;width:350rpx;' mode="widthFix"  bindtap="previewImage" data-src="cloud://pmis-4c63d.706d-pmis-4c63d-1300406220/img/jeb.jpg"></image>
+<image  src='../pms/images/jeb.jpg' style='height:350rpx;width:350rpx;' mode="widthFix"  bindtap="previewImage" data-src="cloud://pmis-4c63d.706d-pmis-4c63d-1300406220/img/jeb.jpg"></image>
 </view>

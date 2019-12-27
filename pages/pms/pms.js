@@ -37,7 +37,7 @@ Page({
        searchKeywordtypename:that.data.searchKeywordtypename
       },
       success: function (res) {
-        console.log(res.result) ;
+        // console.log(res.result) ;
         //console.log(that.searchDatalist);
         that.setData({
           showDatalist: res.result.data,
@@ -53,7 +53,7 @@ Page({
         that.setData({
          searchDatalist: that.data.searchDatalist,
         });
-        //console.log(that.data.searchDatalist);
+        console.log(that.data.searchDatalist);
         //that.data.searchDatalist = that.data.showDatalist;
         // console.log(that.data.searchDatalist.length);
       },
@@ -120,46 +120,58 @@ Page({
     });
     //判断查询项是否为空
     if ((this.data.searchKeywordyxbhid != '') | (this.data.searchKeywordtypename != '')){
-    wx.cloud.init();
-    const db = wx.cloud.database();
-    var that=this;
-      wx.cloud.callFunction({
-        // 云函数名称
-        name: 'getData',
-        // 传给云函数的参数
-        data: {
-          bdzname: that.data.bdzname,
-          sblxtype: that.data.sblxtype,
-          searchKeywordyxbhid: that.data.searchKeywordyxbhid,
-          searchKeywordtypename: that.data.searchKeywordtypename
-        },
-        success: function (res) {
-          console.log(res.result);
-          //console.log(that.searchDatalist);
-          that.setData({
-            pmslist : res.result.data,
-          });
-          console.log(that.data.pmslist.length);
-            that.onLoad();
-        },
-        fail:function() {
-          wx.showToast({
-              title: '不存在该设备！请检查查询条件，运行编号和设备型号需与被查询对象一致。',
-              icon: 'none',
-              duration: 3000,
+      wx.cloud.init();
+      const db = wx.cloud.database();
+      var that=this;
+        wx.cloud.callFunction({
+          // 云函数名称
+          name: 'getData',
+          // 传给云函数的参数
+          data: {
+            bdzname: that.data.bdzname,
+            sblxtype: that.data.sblxtype,
+            searchKeywordyxbhid: that.data.searchKeywordyxbhid,
+            searchKeywordtypename: that.data.searchKeywordtypename
+          },
+          success: function (res) {
+            // console.log(res.result);
+            //console.log(that.searchDatalist);
+            that.setData({
+              pmslist : res.result.data,
+            });
+            // console.log(that.data.pmslist.length);
+              that.onLoad();
+          },
+          fail:function() {
+            wx.showToast({
+                title: '不存在该设备！请检查查询条件，运行编号和设备型号需与被查询对象一致。',
+                icon: 'none',
+                duration: 3000,
 
-        })}
+          })}
 
-      });
-      //console.log(this.data.pmslist.length);
-      
+        });
+        //console.log(this.data.pmslist.length);
+        
     }
     else
     {
       this.onLoad();
     }
   },
-
+  //显示设备详细信息
+  clickItem:function(e){
+    //设置缓存，页面之间传递数据
+    wx.setStorage({
+      key: "pmsdatalist",
+      data: this.data.searchDatalist
+    })
+    wx.navigateTo({
+      url: '../pmsitem/pmsitem?index='+e.currentTarget.dataset.index,
+    })
+    console.log(e.currentTarget.dataset.index)
+    //console.log(index)
+  },
   /*
   searchScrollLower: function () {
     this.setData({

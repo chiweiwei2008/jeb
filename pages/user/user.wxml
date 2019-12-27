@@ -1,0 +1,15 @@
+<!--pages/user/user.wxml-->
+<!-- 头部头像及用户名 -->
+<view class="container">
+  <view class="head">
+    <view class="userimg">
+      <image src="img/head.jpg"></image>
+    </view>
+    <view class="usertxt">
+      <text>您还未登录，点击登录！！</text>
+    </view>
+  </view>
+  
+  
+  
+</view>

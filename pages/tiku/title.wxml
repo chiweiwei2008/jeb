@@ -13,7 +13,7 @@
       <view class='listblock'>
          <view class='list-msg2' bindtap='bindShowMsgtiku'>
                <text>{{tikuname}}</text>
-               <image style='height:30rpx;width:30rpx;'      src='../home/images/timg.jpg'></image>
+               <image style='height:30rpx;width:30rpx;'      src='../pms/images/timg.jpg'></image>
          </view>
 <!-- 下拉需要显示的列表 -->
     <view class="select_box" wx:if="{{selecttiku}}">
@@ -38,7 +38,7 @@
       <view class='listblock'>
          <view class='list-msg2' bindtap='bindShowMsgtimu'>
                <text>{{timuname}}</text>
-               <image style='height:30rpx;width:30rpx;'      src='../home/images/timg.jpg'></image>
+               <image style='height:30rpx;width:30rpx;'      src='../pms/images/timg.jpg'></image>
          </view>
      
 
