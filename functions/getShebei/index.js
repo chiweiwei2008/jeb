@@ -9,15 +9,25 @@ exports.main = async (event, context) => {
   let filterObj = {};
   //返回数据集
   const shebeiObjlist = []
+  
   // 先取出集合记录总数
   for(let i=0;i<sblxtypelist.length;i++){
-    filterObj.sbsblx = sblxtypelist[i];
-  // shebeiObjlist[i].sbsblx = sblxtypelist[i];
-   // shebeiObjlist[i].total = await db.collection('jxgs').where(filterObj).count().total;
-    const countResult = await db.collection('jxgs').where(filterObj).count();
+    var shebeiObj = {}
+    filterObj.sblxtype = sblxtypelist[i];
+    shebeiObj.sbsblx = sblxtypelist[i];
+    //shebeiObj.total = await db.collection('jxgs').where(filterObj).count().total;
+    const countResult = await db.collection('pmis').where(filterObj).count();
     const total = countResult.total
-    shebeiObjlist.push(total);
+    shebeiObj.total = total;
+    console.log(shebeiObj.sbsblx);
+    console.log(shebeiObj.total);
+    //console.log(await shebeiObj);
+    shebeiObjlist.push(shebeiObj);
+    console.log(shebeiObjlist);
+  
   }
   // 等待所有
-  return shebeiObjlist;
+   return  shebeiObjlist;
 }
+
+ 
