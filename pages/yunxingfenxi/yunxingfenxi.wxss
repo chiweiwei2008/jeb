@@ -1,4 +1,5 @@
 @import "../pms/pms.wxss";
+@import "../jianxiujuece/jianxiujuece.wxss";
 .containercanvas{
 width: 100%;
 text-align:center;
@@ -19,4 +20,8 @@ font-family: "Microsoft soft";
 width: 100%;
 height: 400px;
 text-align:center;
+}
+/* 数据红色显示 */
+.red{
+  color: red;
 }

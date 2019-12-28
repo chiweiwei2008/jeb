@@ -1,7 +1,17 @@
 <!--bigdata.wxml-->
 <view class="container">
-	<view class="title"  style="font-size: 18px;font-weight: 700;">
-		{{chartTitle}}
-	</view>
-    <canvas canvas-id="columnCanvas" class="canvas" ></canvas>
+  <p class="biaoti">一、设备总体情况</p>
+  <text space="emsp">  截止<text class="red">{{datetime}}</text>，国网河北检修公司共有在运设备<text class="red">{{pmstotal}}</text>台/组，各设备类型数量分布如下：</text>
+  <view class="title" style="font-size: 14px;font-weight: 700;">
+    {{chartTitle}}
+  </view>
+  <canvas canvas-id="columnCanvas" class="canvas"></canvas>
+  <text space="emsp"> 其中投运1-5年的<text class="red">{{flagone}}</text>台/组，投运6-10年的<text class="red">{{flagtwo}}</text>台/组，投运11-15年的<text class="red">{{flagthree}}</text>台/组，投运15年以上的<text class="red">{{flagfour}}</text>台/组，设备按投运年限分布如下：</text>
+
+   <view class="title" style="font-size: 14px;font-weight: 700;">
+    国网河北检修公司设备按投运年限分布情况
+  </view>
+  <view class="containercanvas">
+    <canvas canvas-id="tynxpieCanvas" class="canvas"></canvas>
+  </view>
 </view>

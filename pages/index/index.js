@@ -55,7 +55,7 @@ Page({
     routers: [
       {
         name: '台账查询',
-        url: '../home/home',
+        url: '../pms/pms',
         icon: 'img/1.png',
         code: '10'
       },
