@@ -9,7 +9,7 @@
              <!--下拉框  -->
                  <view class='list-msg2' bindtap='bindShowMsg'>
                      <text>{{bdzname}}</text>
-                     <image style='height:30rpx;width:30rpx;' src='../home/images/timg.jpg'></image>
+                     <image style='height:30rpx;width:30rpx;' src='../pms/images/timg.jpg'></image>
                   </view>
      
                     <!-- 下拉需要显示的列表 -->
@@ -27,7 +27,7 @@
                 <!--下拉框  -->
              <view class='list-msg2' bindtap='sbsblxbindShowMsg'>
                     <text>{{sbsblx}}</text>
-                    <image style='height:30rpx;width:30rpx;' src='../home/images/timg.jpg'></image>
+                    <image style='height:30rpx;width:30rpx;' src='../pms/images/timg.jpg'></image>
             </view>
      
                <!-- 下拉需要显示的列表 -->
@@ -46,7 +46,7 @@
         <!--下拉框  -->
             <view class='list-msg2' bindtap='sbyxbhbindShowMsg'>
              <text>{{sbyxbh}}</text>
-             <image style='height:30rpx;width:30rpx;' src='../home/images/timg.jpg'></image>
+             <image style='height:30rpx;width:30rpx;' src='../pms/images/timg.jpg'></image>
             </view>
      
 <!-- 下拉需要显示的列表 -->
