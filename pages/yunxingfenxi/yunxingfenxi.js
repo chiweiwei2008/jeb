@@ -29,6 +29,8 @@ Page({
     flagtwo: 0,//投运6-10年
     flagthree: 0,//投运11-15年
     flagfour: 0,//投运15年以上
+    showone:true,//图表1加载按钮是否显示
+    showtwo:true,//图表2加载按钮是否显示
   },
 
 
@@ -59,7 +61,8 @@ Page({
         that.setData({
           //初始值
           pmstotal: that.data.pmstotal,
-          datetime: now.getFullYear() + "年" + (now.getMonth() + 1) + "月" + now.getDate() + "日"
+          datetime: now.getFullYear() + "年" + (now.getMonth() + 1) + "月" + now.getDate() + "日",
+          showone: false
         });
         var windowWidth = 320;
         try {
@@ -113,12 +116,12 @@ Page({
 
       },
       success: function (res) {
-        console.log(res);
         that.setData({
           flagone: res.result.oneflagyear,
           flagtwo: res.result.twoflagyear,
           flagthree: res.result.threeflagyear,
-          flagfour: res.result.fourflagyear
+          flagfour: res.result.fourflagyear,
+          showtwo:false
         });
         //加载投运年限图表
         var windowWidth1 = wx.getSystemInfoSync().windowWidth;

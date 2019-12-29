@@ -1,4 +1,6 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "mp-loading": "../../style/weui-miniprogram/loading/loading"
+  },
   "navigationBarTitleText": "运行数据分析"
 }
