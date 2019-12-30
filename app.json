@@ -11,7 +11,8 @@
     "pages/jixietexing/jixietexing",
     "pages/jianxiujuece/jianxiujuece",
     "pages/pmsitem/pmsitem",
-    "pages/user/user"
+    "pages/user/user",
+    "pages/login/login"
   ],
   "tabBar": {
     "color": "#a9b7b7",

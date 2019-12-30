@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "mp-icon": "../../style/weui-miniprogram/icon/icon"
+  }
+}
