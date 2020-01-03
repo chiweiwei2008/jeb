@@ -18,6 +18,8 @@ Page({
     chardataA:[0.65,0.63,0.62,0.61,0.65],
     chardataB:[0.55, 0.53, 0.52, 0.51, 0.55],
     chardataC: [0.45, 0.43, 0.42, 0.41, 0.45],
+    //加载按钮是否显示
+    showone:true,
 
     
 
@@ -52,7 +54,7 @@ Page({
   //变电站绑定函数
   bindShowMsg() {
     this.setData({
-      select: !this.data.select
+      select: !this.data.select,
     });
 
   },
@@ -65,6 +67,7 @@ Page({
       sbsblxlist:[],
       sbyxbh: '',
       sbyxbhlist: [],
+      // showone:true,
     });
     this.onLoad();
   },
@@ -85,6 +88,7 @@ Page({
       sbsblxselect: false,
       sbyxbh: '',
       sbyxbhlist: [],
+      // showone:true,
     });
     this.onLoad();
   },
@@ -105,11 +109,24 @@ Page({
       sbsblxselect: this.data.sbsblxselect, 
       sbyxbh: name,
       sbyxbhselect: false,
+      showone:true,
     });
    this.onLoad();
   },
   onLoad: function (e) {
-   
+    //权限认证
+    wx.getStorage({
+      key: 'userObj',
+      success: function (userObj) {
+        console.log('用户已登录！');
+      },
+      fail: function (e) {
+        wx.redirectTo({
+          url: '../login/login'
+        })
+      }
+    })
+    
     //调用云函数
     var that = this;
     wx.cloud.init();
@@ -219,6 +236,7 @@ Page({
      chardataA: that.data.chardataA,
      chardataB: that.data.chardataB,
      chardataC: that.data.chardataC,
+     showone:false,
 
    });
 

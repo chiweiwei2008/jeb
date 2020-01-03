@@ -1,4 +1,6 @@
 {
-  "usingComponents": {},
-  "navigationBarTitleText": "缺陷诊断"
+  "usingComponents": {
+    "mp-loading": "../../style/weui-miniprogram/loading/loading"
+  },
+  "navigationBarTitleText": "缺陷分析"
 }

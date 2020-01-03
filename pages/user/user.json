@@ -1,3 +1,6 @@
 {
+  "usingComponents": {
+    "mp-icon": "../../style/weui-miniprogram/icon/icon"
+  },
   "navigationBarTitleText": "个人中心"
 }

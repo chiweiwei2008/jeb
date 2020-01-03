@@ -24,7 +24,8 @@ Page({
     chardataH2: [0.75, 0.73, 0.72, 0.71, 0.75],
     chardataH2O: [0.85, 0.83, 0.82, 0.81, 0.85],
     chardataO2: [0.95, 0.93, 0.92, 0.91, 0.95],
-
+    //加载按钮是否加载
+    showone:true,  
 
 
 
@@ -100,11 +101,23 @@ Page({
       sbsblxselect: this.data.sbsblxselect,
       sbyxbh: name,
       sbyxbhselect: false,
+      showone:true, 
     });
     this.onLoad();
   },
   onLoad: function (e) {
-
+    //权限认证
+    wx.getStorage({
+      key: 'userObj',
+      success: function (userObj) {
+        console.log('用户已登录！');
+      },
+      fail: function (e) {
+        wx.redirectTo({
+          url: '../login/login'
+        })
+      }
+    })
     //调用云函数
     var that = this;
     wx.cloud.init();
@@ -229,6 +242,7 @@ Page({
           chardataH2: that.data.chardataH2,
           chardataH2O: that.data.chardataH2O,
           chardataO2: that.data.chardataO2,
+          showone:false, 
 
         });
 

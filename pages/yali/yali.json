@@ -1,4 +1,6 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "mp-loading": "../../style/weui-miniprogram/loading/loading"
+  },
   "navigationBarTitleText": "SF6压力在线监测系统"
 }
