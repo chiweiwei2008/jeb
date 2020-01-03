@@ -44,6 +44,9 @@ Page({
     commonlynumber:0,//一般缺陷数量
     quexiantypelist:[],//从返回缺陷数据集中提取的缺陷类别
     quexiantypetotal:[],//从返回缺陷数据集中提取的缺陷类别
+    showone:true,//图表1加载按钮是否显示
+    showtwo:true,//图表2加载按钮是否显示
+    showthree:true,//图表3加载按钮是否显示
   },
 
   //设备类型赋值

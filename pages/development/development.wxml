@@ -1,0 +1,6 @@
+<!--pages/development/development.wxml-->
+ <view class="container">
+<view class='jeberweima'>
+<image  src='img/development.jpeg' style='height:530rpx;width:620rpx;' mode="widthFix" ></image>
+</view>
+</view>

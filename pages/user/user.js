@@ -16,22 +16,22 @@ Page({
     //功能列表    
     grids: [{
         "title": "台帐修改",
-        "pageUrl": "../pms/pms",
+        "pageUrl": "../development/development",
         "imgUrl": "img/1.jpg"
       },
       {
         "title": "任务单",
-        "pageUrl": "../pms/pms",
+        "pageUrl": "../development/development",
         "imgUrl": "img/2.jpg"
       },
       {
         "title": "账户管理",
-        "pageUrl": "../pms/pms",
+        "pageUrl": "../development/development",
         "imgUrl": "img/3.jpg"
       },
       {
         "title": "权限设置",
-        "pageUrl": "../pms/pms",
+        "pageUrl": "../development/development",
         "imgUrl": "img/4.jpg"
       }
     ]

@@ -1,0 +1,15 @@
+/* pages/development/development.wxss */
+page{
+  height: 100%;
+}
+.container{
+  width: 100%;
+  height: 100%;
+  background-color:rgb(204, 235, 245)
+}
+.jeberweima{
+  width: 100%;
+  text-align:center;
+  position:relative;
+  top: 200rpx;
+ }
