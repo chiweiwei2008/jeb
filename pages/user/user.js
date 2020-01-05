@@ -70,6 +70,22 @@ Page({
 
 
   },
+  logOut:function(e){
+    wx.removeStorage({
+      key: 'userObj',
+      success (res) {
+        console.log("退出登录成功！")
+      }
+    });
+    this.setData({
+      nickName: "",
+      avatarUrl: "",
+      gender: "", //性别 0：未知、1：男、2：女
+      province: "",
+      city: "",
+      country: "",
+    });
+  },
   /**
    * 生命周期函数--监听页面加载
    */

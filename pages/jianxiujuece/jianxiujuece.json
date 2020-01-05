@@ -1,4 +1,8 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "mp-cells": "../../style/weui-miniprogram/cells/cells",
+    "mp-cell": "../../style/weui-miniprogram/cell/cell",
+    "mp-badge": "../../style/weui-miniprogram/badge/badge"
+  },
   "navigationBarTitleText": "检修决策"
 }

@@ -1,19 +1,69 @@
 <!--pages/jianxiujuece/jianxiujuece.wxml-->
-<view class="container">
-  <view style="font-size: 20px;font-weight: 700;">
-    <text>检修决策系统</text>
+<view class="page">
+	<view class="page__hd">
+		<view style="font-size: 20px;font-weight: 700;text-align:center">
+			<text>检修辅助决策系统</text>
+		</view>
+	</view>
+  <view class="biaoti">一、检修建议</view>
+	<view class="page__bd">
+		<mp-cells title="1.一年内频繁出现缺陷的设备建议安排检修">
+    <navigator url="jueceitem/jueceitem?name=defectlist">
+			<mp-cell link>
+				<view style="display: inline-block; vertical-align: middle">缺陷频发设备</view>
+				<mp-badge content="{{defectnumber}}" style="margin-left: 5px;" />
+			</mp-cell>
+    </navigator>
+		</mp-cells>
+		<mp-cells title="2.超检修周期的设备建议安排检修">
+			<navigator url="jueceitem/jueceitem?name=repairlist">
+			<mp-cell link>
+				<view style="display: inline-block; vertical-align: middle">超检修周期设备</view>
+				<mp-badge content="{{repairnumber}}" style="margin-left: 5px;" />
+			</mp-cell>
+			</navigator>
+		</mp-cells>
   </view>
-  <p class="biaoti">一、检修建议</p>
-  <text space="emsp">  1.廉州500kV变电站500kV 5011断路器缺陷故障次数最多，故障类型为电机储能回路打压故障，建议结合停电计划加强C类检修，检修计划开展前，加强专业巡视，并积极储备备件。</text>
-  <p class="biaoti">二、大修、技改建议</p>
-  <text space="emsp">  1.蔺河500kV变电站500kV 5043断路器为气动机构断路器，运行时间超20年，故障次数较多，建议申报技改项目进行更换。</text>
-  <text space="emsp">  2.廉州500kV变电站220kV 256-5隔离开关运行时间超15年，动静触头接触部分发热缺陷较多，建议申报大修项目进行导电部分更换。</text>
-  <p class="biaoti">三、停电计划建议</p>
-  <text space="emsp">  1.黄骅500kV变电站500kV 5012断路器，上次检修时间为2012年10月13日，截止当前已超状态检修周期，建议列入2020年年度检修计划。</text>
-  <text space="emsp">  2.辛集500kV变电站220kV 213-1隔离开关，上次检修时间为2012年05月29日，截止当前已超状态检修周期，建议列入2020年年度检修计划。</text>
-  <p class="biaoti">四、备品备件储备建议</p>
-  <text space="emsp">  1.黄骅500kV变电站500kV三菱电机株式会社（型号：500-SFMT-63F）产品，隔离开关无法电动操作缺陷次数较多，缺陷处理需更换分合闸继电器，目前储备数量为2，建议立即采购补充。</text>
-  <p class="biaoti">五、配合停送电建议</p>
-  <text space="emsp">  1.根据下周检修计划，辛集500kV变电站#2母线有停电检修工作，根据上次倒闸操作情况，母线隔离开关出现分合闸不到位的概率较大，建议安排人员配合停送电操作。</text>
-
+	<view class="biaoti">二、大修技改建议</view>	
+	<view class="page__bd">
+		<mp-cells title="1.运行时间超大修/技改周期设备">
+			<navigator url="jueceitem/jueceitem?name=mrepairlist">
+			<mp-cell link>
+				<view style="display: inline-block; vertical-align: middle">超大修/技改周期设备</view>
+				<mp-badge content="{{mrepairnumber}}" style="margin-left: 5px;" />
+			</mp-cell>
+			</navigator>
+		</mp-cells>
+		<mp-cells title="2.状态评价为异常状态设备">
+			<navigator url="jueceitem/jueceitem?name=evaluationlist">
+			<mp-cell link>
+				<view style="display: inline-block; vertical-align: middle">异常状态设备</view>
+				<mp-badge content="{{evaluationnumber}}" style="margin-left: 5px;" />
+			</mp-cell>
+			</navigator>
+		</mp-cells>
+		<mp-cells title="3.经历异常工况设备">
+			<navigator url="jueceitem/jueceitem?name=abnormallist">
+			<mp-cell link>
+				<view style="display: inline-block; vertical-align: middle">经历异常工况设备</view>
+				<mp-badge content="{{abnormalnumber}}" style="margin-left: 5px;" />
+			</mp-cell>
+			</navigator>
+		</mp-cells>
+	</view>
+  <view class="biaoti">三、备品备件储备建议</view>	
+	<view class="page__bd">
+		<mp-cells title="1.库存不满足备品备件定额要求的备品备件">
+			<mp-cell link>
+				<view style="display: inline-block; vertical-align: middle">库存不足备品备件</view>
+				<mp-badge content="17" style="margin-left: 5px;" />
+			</mp-cell>
+		</mp-cells>
+		<mp-cells title="2.库存满足定额要求但年消耗量较大的备品备件">
+			<mp-cell link>
+				<view style="display: inline-block; vertical-align: middle">年消耗量较大的备品备件</view>
+				<mp-badge content="29" style="margin-left: 5px;" />
+			</mp-cell>
+		</mp-cells>
+	</view>
 </view>

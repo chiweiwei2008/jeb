@@ -21,16 +21,13 @@ Page({
     this.setData({
       shebeiKeyword: name,
       select: false, 
-      showone:true,//图表1加载按钮是否显示
-      showtwo:true,//图表2加载按钮是否显示
-      showthree:true,//图表3加载按钮是否显示
     });
   },
   
   
 
   data: {
-    sblxtypelist: app.globalData.sblxtypelist,
+    sblxtypelist: app.globalData.quexiansblxtypelist,
     select: false,
     shebeiKeyword: '断路器',//当前设备类型
     // shebeilist: [],//云函数连接查询返回的数据集合
@@ -61,6 +58,8 @@ Page({
   searchBtnClick:function(e){
   this.setData({
     shebeiKeyword: this.data.shebeiKeyword,
+    quexiantypelist:[],//缺陷类别归零
+    quexiantypetotal:[],//缺陷数量归零
     showone:true,
     showtwo:true,
     showthree:true,

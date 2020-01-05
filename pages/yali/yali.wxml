@@ -52,7 +52,7 @@
 <!-- 下拉需要显示的列表 -->
 
             <cover-view class="select_box" wx:if="{{sbyxbhselect}}">
-             <cover-view class="select_one" bindtap="sbyxbhmySelect" data-name="{{item}}" wx:for="{{sbyxbhlist}}">{{item}}</cover-view>
+             <cover-view class="select_one" bindtap="sbyxbhmySelect" data-name="{{item}}" wx:for="{{sbyxbhlist}}" wx:key="*this">{{item}}</cover-view>
              </cover-view>
    </view> 
  </view> 

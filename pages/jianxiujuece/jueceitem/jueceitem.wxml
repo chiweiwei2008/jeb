@@ -1,0 +1,22 @@
+<!--pages/jianxiujuece/jueceitem/jueceitem.wxml-->
+<view style="font-size: 20px;font-weight: 700;text-align:center">
+			<text>{{titlename}}</text>
+		</view>
+
+<mp-cells ext-class="my-cells" wx:if="{{showone}}">
+  <block wx:for="{{datalist}}" wx:for-item="dataitem" wx:key="_id">
+    <mp-cell >
+        <view>{{dataitem.bdzname}}</view>
+        <view slot="footer">{{dataitem.yxbhname}}</view>
+    </mp-cell>
+  </block>
+</mp-cells>
+
+<mp-cells ext-class="my-cells" wx:if="{{showtwo}}">
+  <block wx:for="{{datalist}}" wx:for-item="dataitem" wx:key="_id">
+    <mp-cell >
+        <view>{{dataitem.bdzname}}</view>
+        <view slot="footer">{{dataitem.sbyxbh}}</view>
+    </mp-cell>
+  </block>
+</mp-cells>
