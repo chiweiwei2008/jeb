@@ -14,6 +14,7 @@ Page({
     select: false,
     sbsblxselect: false,
     sbyxbhselect: false,
+    show:true,//加载按钮
     datelist: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20],//图表日期项
     chardataA: [0,0, 0, 0, 0.326, 0.651,0.531,0.723,1.08,1.111,1.261,1.261,1.261,1.261,0.111,0,0,0,0,0],
     chardataB: [0, 0, 0, 0, 0.426, 0.751, 0.631, 0.823, 1.18, 1.211, 1.361, 1.361, 1.361, 1.361, 0.211, 0, 0, 0, 0, 0],
@@ -94,6 +95,7 @@ Page({
       sbsblxselect: this.data.sbsblxselect,
       sbyxbh: name,
       sbyxbhselect: false,
+      show:true,
     });
     this.onLoad();
   },
@@ -238,6 +240,7 @@ Page({
         };
 
         that.setData({
+          show:false,
           sbsblx: that.data.sbsblx,
           sbsblxlist: that.data.sbsblxlist,
           sbyxbh: that.data.sbyxbh,
