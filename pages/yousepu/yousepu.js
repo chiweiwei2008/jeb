@@ -1,7 +1,5 @@
-var app = getApp();
 var wxCharts = require('../../utils/wxcharts.js');
 var lineChart = null;
-var startPos = null;
 Page({
   data: {
     sbsblx: '',
@@ -25,7 +23,7 @@ Page({
     chardataH2O: [0.85, 0.83, 0.82, 0.81, 0.85],
     chardataO2: [0.95, 0.93, 0.92, 0.91, 0.95],
     //加载按钮是否加载
-    showone:true,  
+    showone:false,  
 
 
 
@@ -48,41 +46,74 @@ Page({
   //变电站绑定函数
   bindShowMsg() {
     this.setData({
-      select: !this.data.select
+      select: !this.data.select,
+      sbsblx:'',
+      sbsblxlist:[],
+      sbyxbh:'',
+      sbyxbhlist:[]
     });
 
   },
   mySelect(e) {
+    var that=this;
     var name = e.currentTarget.dataset.name;
-    this.setData({
-      bdzname: name,
-      select: false,
-      sbsblx: '',
-      sbsblxlist: [],
-      sbyxbh: '',
-      sbyxbhlist: [],
-    });
-    this.onLoad();
+    that.data.bdzname=name;
+    wx.cloud.init();
+    wx.cloud.callFunction({
+      name:'getYousepu',
+      data:{
+        bdzname:that.data.bdzname
+      },
+      success:function(res) {
+        console.log(res.result[0]);
+        that.data.sbsblxlist=res.result[0];
+        that.setData({
+          bdzname:that.data.bdzname,
+          sbsblxlist: that.data.sbsblxlist,
+          select: false,
+          // sbsblx:'',
+          // sbsblxlist:[],
+          // sbyxbh: '',
+          // sbyxbhlist: [],
+          // showone:true,
+        });
+      }
+    })
   },
 
   //设备类型绑定函数
   sbsblxbindShowMsg() {
     this.setData({
-      sbsblxselect: !this.data.sbsblxselect
+      sbsblxselect: !this.data.sbsblxselect,
+      sbyxbh:'',
+      sbyxbhlist:[]
     });
 
   },
   sbsblxmySelect(e) {
+    var that=this;
     var name = e.currentTarget.dataset.name;
-    this.setData({
-      bdzname: this.data.bdzname,
-      select: this.data.select,
-      sbsblx: name,
-      sbsblxselect: false,
-      sbyxbh: '',
-      sbyxbhlist: [],
+    that.data.sbsblx=name;
+    wx.cloud.callFunction({
+      name:'getYousepu',
+      data:{
+        bdzname:that.data.bdzname,
+        typename:that.data.sbsblx
+      },
+      success:function(res) {
+        console.log(res.result[0]);
+        that.data.sbyxbhlist=res.result[0];
+        that.setData({
+          bdzname: that.data.bdzname,
+          select: that.data.select,
+          sbsblx: that.data.sbsblx,
+          sbsblxselect: false,
+          // sbyxbh: '',
+          sbyxbhlist: that.data.sbyxbhlist,
+          // showone:true,
+        });
+      }
     });
-    this.onLoad();
   },
 
   //运行编号绑定函数
@@ -93,160 +124,124 @@ Page({
 
   },
   sbyxbhmySelect(e) {
+    var that=this;
     var name = e.currentTarget.dataset.name;
-    this.setData({
-      bdzname: this.data.bdzname,
-      select: this.data.select,
-      sbsblx: this.data.sbsblx,
-      sbsblxselect: this.data.sbsblxselect,
-      sbyxbh: name,
-      sbyxbhselect: false,
-      showone:true, 
+    that.data.sbyxbh=name;
+    wx.cloud.callFunction({
+      name:'getYousepu',
+      data:{
+        bdzname:that.data.bdzname,
+        typename:that.data.sbsblx,
+        yxbhname:that.data.sbyxbh
+      },
+      success:function(res) {
+        that.data.yousepulist=res.result;
+        that.setData({
+          bdzname: that.data.bdzname,
+          select: that.data.select,
+          sbsblx: that.data.sbsblx,
+          sbsblxselect: that.data.sbsblxselect, 
+          sbyxbh: that.data.sbyxbh,
+          sbyxbhselect: false,
+          yousepulist:that.data.yousepulist,
+          showone:true,
+        });
+        that.onLoad();
+      }
     });
-    this.onLoad();
+
   },
   onLoad: function (e) {
-    //权限认证
-    wx.getStorage({
-      key: 'userObj',
-      success: function (userObj) {
-        console.log('用户已登录！');
-      },
-      fail: function (e) {
-        wx.redirectTo({
-          url: '../login/login'
-        })
-      }
-    })
+    // //权限认证
+    // wx.getStorage({
+    //   key: 'userObj',
+    //   success: function (userObj) {
+    //     console.log('用户已登录！');
+    //   },
+    //   fail: function (e) {
+    //     wx.redirectTo({
+    //       url: '../login/login'
+    //     })
+    //   }
+    // });
     //调用云函数
-    var that = this;
+    var that=this;
     wx.cloud.init();
+    if(that.data.bdznamelist.length==0){
     wx.cloud.callFunction({
-      // 云函数名称
-      name: 'getYousepu',
-      // 传给云函数的参数
-      data: {
-
+      name:'getYousepu',
+      data:{
+        
       },
-      success: function (res) {
-        that.data.yousepulist = res.result.data;
-        //console.log(that.data.yousepulist);
-        //获取变电站集合
-        that.data.bdznamelist = [];
-        that.data.bdznamelist.push(that.data.yousepulist[0].bdzname);
-        for (let i = 0; i < that.data.yousepulist.length; i++) {
-          var flag = 0;
-          for (let j = 0; j < that.data.bdznamelist.length; j++) {
-            if (that.data.yousepulist[i].bdzname !== that.data.bdznamelist[j]) { flag++ };
-            if (flag == that.data.bdznamelist.length) that.data.bdznamelist.push(that.data.yousepulist[i].bdzname);
-          }
-
-        };
-        //获取设备类型集合
-        if (that.data.bdzname !== "") {
-          //console.log(that.data.bdzname);
-          var listone = [];
-          for (let i = 0; i < that.data.yousepulist.length; i++) {
-            if (that.data.yousepulist[i].bdzname === that.data.bdzname) { listone.push(that.data.yousepulist[i]) };
-          };
-
-          that.data.sbsblxlist = [];
-          that.data.sbsblxlist.push(listone[0].typename);
-          for (let j = 0; j < listone.length; j++) {
-            var sbsblxflag = 0;
-            for (let k = 0; k < that.data.sbsblxlist.length; k++) {
-              if (listone[j].typename !== that.data.sbsblxlist[k]) { sbsblxflag++ };
-              if (sbsblxflag == that.data.sbsblxlist.length) that.data.sbsblxlist.push(that.data.listone[j].typename);
-            }
-          };
-          listone = [];
-        } else {
-          that.data.sbsblxlist = [];
-        };
-        //获取运行编号
-        //console.log(that.data.sbsblx);
-        //console.log(that.data.bdzname);
-        if (that.data.sbsblx !== '' && that.data.bdzname !== '') {
-          var listtwo = [];
-          for (let i = 0; i < that.data.yousepulist.length; i++) {
-            if ((that.data.yousepulist[i].bdzname === that.data.bdzname) && (that.data.yousepulist[i].typename === that.data.sbsblx)) { listtwo.push(that.data.yousepulist[i]) };
-
-          };
-          // console.log(listtwo);
-          that.data.sbyxbhlist = [];
-          that.data.sbyxbhlist.push(listtwo[0].yxbhname);
-          for (let j = 0; j < listtwo.length; j++) {
-            // console.log('第二层j='+j);
-            var sbyxbhflag = 0;
-            for (let k = 0; k < that.data.sbyxbhlist.length; k++) {
-              //console.log(listtwo[j].sbyxbh);
-              //console.log(that.data.sbyxbhlist[k]);
-              //console.log('第三层k=' + k);
-              // console.log(that.data.sbyxbhlist.length);
-              // console.log(sbyxbhflag);
-              if (listtwo[j].yxbhname !== that.data.sbyxbhlist[k]) { sbyxbhflag++ };
-              //console.log(sbyxbhflag);
-              if (sbyxbhflag == that.data.sbyxbhlist.length) {
-                that.data.sbyxbhlist.push(listtwo[j].yxbhname);
-                //console.log("that.data.listtwo[j].sbyxbh")
-              }
-            }
-          };
-          listtwo = [];
-        } else {
-          that.data.sbyxbhlist = [];
-        };
-        //获取展示日期
-        if (that.data.bdzname !== "" && that.data.sbsblx !== "" && that.data.sbyxbh !== "") {
-          that.data.datelist = [];
-          that.data.chardataC2H2 = [];
-          that.data.chardataC2H4 = [];
-          that.data.chardataC2H6 = [];
-          that.data.chardataCH4 = [];
-          that.data.chardataCO = [];
-          that.data.chardataCO2 = [];
-          that.data.chardataH2 = [];
-          that.data.chardataH2O = [];
-          that.data.chardataO2 = [];
-
-          for (let i = 0; i < that.data.yousepulist.length; i++) {
-            if (that.data.yousepulist[i].bdzname === that.data.bdzname && that.data.yousepulist[i].typename === that.data.sbsblx && that.data.yousepulist[i].yxbhname === that.data.sbyxbh) {
-              that.data.datelist.push(that.data.yousepulist[i].datetime);
-              that.data.chardataC2H2.push(that.data.yousepulist[i].C2H2);
-              that.data.chardataC2H4.push(that.data.yousepulist[i].C2H4);
-              that.data.chardataC2H6.push(that.data.yousepulist[i].C2H6);
-              that.data.chardataCH4.push(that.data.yousepulist[i].CH4);
-              that.data.chardataCO.push(that.data.yousepulist[i].CO/100);
-              that.data.chardataCO2.push(that.data.yousepulist[i].CO2/100);
-              that.data.chardataH2.push(that.data.yousepulist[i].H2/100);
-              that.data.chardataH2O.push(that.data.yousepulist[i].H2O/100);
-              that.data.chardataO2.push(that.data.yousepulist[i].O2);
-            }
-          };
-        };
-
+      success:function (res) {
+        that.data.bdznamelist=res.result[0];
+        console.log(that.data.bdznamelist);
         that.setData({
-          sbsblx: that.data.sbsblx,
-          sbsblxlist: that.data.sbsblxlist,
-          sbyxbh: that.data.sbyxbh,
-          sbyxbhlist: that.data.sbyxbhlist,
-          bdzname: that.data.bdzname,
-          bdznamelist: that.data.bdznamelist,
-          datelist: that.data.datelist,
-          chardataC2H2: that.data.chardataC2H2,
-          chardataC2H4: that.data.chardataC2H4,
-          chardataC2H6: that.data.chardataC2H6,
-          chardataCH4: that.data.chardataCH4,
-          chardataCO: that.data.chardataCO,
-          chardataCO2: that.data.chardataCO2,
-          chardataH2: that.data.chardataH2,
-          chardataH2O: that.data.chardataH2O,
-          chardataO2: that.data.chardataO2,
-          showone:false, 
-
+          bdznamelist:that.data.bdznamelist
         });
+      },
+      fail:console.error
+    });
+  }
+        
+    //获取展示日期
+    if (that.data.bdzname !== "" && that.data.sbsblx !== "" && that.data.sbyxbh !== "") {
+      that.data.datelist = [];
+      that.data.chardataC2H2 = [];
+      that.data.chardataC2H4 = [];
+      that.data.chardataC2H6 = [];
+      that.data.chardataCH4 = [];
+      that.data.chardataCO = [];
+      that.data.chardataCO2 = [];
+      that.data.chardataH2 = [];
+      that.data.chardataH2O = [];
+      that.data.chardataO2 = [];
+      for (let i = 0; i < that.data.yousepulist.length; i++) {
+        if (true) {
+          that.data.datelist.push(that.data.yousepulist[i].datetime);
+          that.data.chardataC2H2.push(that.data.yousepulist[i].C2H2);
+          that.data.chardataC2H4.push(that.data.yousepulist[i].C2H4);
+          that.data.chardataC2H6.push(that.data.yousepulist[i].C2H6);
+          that.data.chardataCH4.push(that.data.yousepulist[i].CH4);
+          that.data.chardataCO.push(that.data.yousepulist[i].CO/100);
+          that.data.chardataCO2.push(that.data.yousepulist[i].CO2/100);
+          that.data.chardataH2.push(that.data.yousepulist[i].H2);
+          that.data.chardataH2O.push(that.data.yousepulist[i].H2O);
+          that.data.chardataO2.push(that.data.yousepulist[i].O2/100);
+        }
+      };
+      that.setData({
+        sbsblx: that.data.sbsblx,
+        sbsblxlist: that.data.sbsblxlist,
+        sbyxbh: that.data.sbyxbh,
+        sbyxbhlist: that.data.sbyxbhlist,
+        bdzname: that.data.bdzname,
+        bdznamelist: that.data.bdznamelist,
+        datelist: that.data.datelist,
+        chardataC2H2: that.data.chardataC2H2,
+        chardataC2H4: that.data.chardataC2H4,
+        chardataC2H6: that.data.chardataC2H6,
+        chardataCH4: that.data.chardataCH4,
+        chardataCO: that.data.chardataCO,
+        chardataCO2: that.data.chardataCO2,
+        chardataH2: that.data.chardataH2,
+        chardataH2O: that.data.chardataH2O,
+        chardataO2: that.data.chardataO2,
+        showone:false, 
+      });
+    };
+  
 
+       
         //画图
+        var windowWidth = 320;
+        try {
+          var res = wx.getSystemInfoSync();
+          windowWidth = res.windowWidth;
+        } catch (e) {
+          console.error('getSystemInfoSync failed!');
+        }
+
 
         lineChart = new wxCharts({
           canvasId: 'lineCanvas',
@@ -298,21 +293,21 @@ Page({
             name: 'H2',
             data: that.data.chardataH2,
             format: function (val, name) {
-              return val + '*100 uL/L';
+              return val + 'uL/L';
             }
           },
           {
             name: 'H2O',
             data: that.data.chardataH2O,
             format: function (val, name) {
-              return val + '*100 uL/L';
+              return val + 'uL/L';
             }
           },
           {
             name: 'O2',
             data: that.data.chardataO2,
             format: function (val, name) {
-              return val + 'uL/L';
+              return val + '*100 uL/L';
             }
           }
           ],
@@ -327,7 +322,7 @@ Page({
             min: 0
           },
           width: windowWidth,
-          height: 400,
+          height: 380,
           dataLabel: true,
           legend:true,
           dataPointShape: true,
@@ -337,18 +332,9 @@ Page({
           }
         });
 
-      },
-      fail: console.error
-    });
 
 
-    var windowWidth = 320;
-    try {
-      var res = wx.getSystemInfoSync();
-      windowWidth = res.windowWidth;
-    } catch (e) {
-      console.error('getSystemInfoSync failed!');
-    }
+   
 
   }
 });

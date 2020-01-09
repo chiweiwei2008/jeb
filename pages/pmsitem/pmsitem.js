@@ -12,18 +12,18 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-     //权限认证
-     wx.getStorage({
-      key: 'userObj',
-      success: function (userObj) {
-        console.log('用户已登录！');
-      },
-      fail: function (e) {
-        wx.redirectTo({
-          url: '../login/login'
-        })
-      }
-    })
+    //  //权限认证
+    //  wx.getStorage({
+    //   key: 'userObj',
+    //   success: function (userObj) {
+    //     console.log('用户已登录！');
+    //   },
+    //   fail: function (e) {
+    //     wx.redirectTo({
+    //       url: '../login/login'
+    //     })
+    //   }
+    // })
 
     
     var that = this

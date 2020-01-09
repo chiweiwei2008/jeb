@@ -8,7 +8,8 @@ Page({
     datalist:[],//显示数据
     titlename:"",//标题
     showone:false,//控制第一模版是否显示
-    showtwo:false,//控制第一模版是否显示
+    showtwo:false,//控制第二模版是否显示
+    showthree:false,//控制第三模版是否显示
   },
 
   /**
@@ -79,6 +80,32 @@ Page({
             showtwo:true,
             datalist:res.data,
             titlename:"经历异常工况设备列表"
+          });
+        }})
+    }
+     //储备数量不满足定额要求备品备件
+     if(optionsname==="ratedlist"){
+      wx.getStorage({
+        key: 'ratedlist',
+        success (res) {
+          //console.log(res.data)
+          that.setData({
+            showthree:true,
+            datalist:res.data,
+            titlename:"储备数量不满足定额要求备品备件"
+          });
+        }})
+    }
+    //储备数量不满足使用要求备品备件
+    if(optionsname==="usedlist"){
+      wx.getStorage({
+        key: 'usedlist',
+        success (res) {
+          //console.log(res.data)
+          that.setData({
+            showthree:true,
+            datalist:res.data,
+            titlename:"储备数量不满足使用要求备品备件"
           });
         }})
     }

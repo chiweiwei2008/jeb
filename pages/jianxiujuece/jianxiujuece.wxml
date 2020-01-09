@@ -54,16 +54,20 @@
   <view class="biaoti">三、备品备件储备建议</view>	
 	<view class="page__bd">
 		<mp-cells title="1.库存不满足备品备件定额要求的备品备件">
+		<navigator url="jueceitem/jueceitem?name=ratedlist">
 			<mp-cell link>
 				<view style="display: inline-block; vertical-align: middle">库存不足备品备件</view>
-				<mp-badge content="17" style="margin-left: 5px;" />
+				<mp-badge content="{{ratednumber}}" style="margin-left: 5px;" />
 			</mp-cell>
+			</navigator>
 		</mp-cells>
 		<mp-cells title="2.库存满足定额要求但年消耗量较大的备品备件">
+		<navigator url="jueceitem/jueceitem?name=usedlist">
 			<mp-cell link>
 				<view style="display: inline-block; vertical-align: middle">年消耗量较大的备品备件</view>
-				<mp-badge content="29" style="margin-left: 5px;" />
+				<mp-badge content="{{usednumber}}" style="margin-left: 5px;" />
 			</mp-cell>
+			</navigator>
 		</mp-cells>
 	</view>
 </view>

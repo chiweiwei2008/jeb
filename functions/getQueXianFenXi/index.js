@@ -26,14 +26,16 @@ exports.main = async (event, context) => {
  var fourflagyear = 0;//15年以上
  var yearObj={};
  var date = new Date().getFullYear();
-for(let j=0;j<tasks[0].data.length;j++)
-{
-  let date1 = new Date(tasks[0].data[j].touyundate).getFullYear();
-  if ((date - date1) > 15) fourflagyear = fourflagyear + 1;
-  if (((date - date1) >= 11) && ((date - date1) <= 15)) threeflagyear = threeflagyear + 1;
-  if (((date - date1) >= 6) && ((date - date1) <= 10)) twoflagyear = twoflagyear + 1;
-  if (((date - date1) >= 0) && ((date - date1) <= 5)) oneflagyear = oneflagyear + 1;
-}
+ for(let i=0;i<batchTimes;i++){
+  for(let j=0;j<tasks[i].data.length;j++)
+  {
+    let date1 = new Date(tasks[i].data[j].touyundate).getFullYear();
+    if ((date - date1) > 15) fourflagyear = fourflagyear + 1;
+    if (((date - date1) >= 11) && ((date - date1) <= 15)) threeflagyear = threeflagyear + 1;
+    if (((date - date1) >= 6) && ((date - date1) <= 10)) twoflagyear = twoflagyear + 1;
+    if (((date - date1) >= 0) && ((date - date1) <= 5)) oneflagyear = oneflagyear + 1;
+  }
+};
 yearObj.oneflagyear=oneflagyear;
 yearObj.twoflagyear=twoflagyear;
 yearObj.threeflagyear=threeflagyear;
@@ -43,11 +45,13 @@ yearObj.fourflagyear=fourflagyear;
 var quexianlist=[];
 var typelist=[];
 var defectproperty=[];//获取缺陷性质
-for(let j=0;j<tasks[0].data.length;j++)
-{
-  typelist.push(tasks[0].data[j].qxqxlx);
-  defectproperty.push(tasks[0].data[j].qxqxxingzhi);
-}
+for(let i=0;i<batchTimes;i++){
+  for(let j=0;j<tasks[i].data.length;j++)
+  {
+    typelist.push(tasks[i].data[j].qxqxlx);
+    defectproperty.push(tasks[i].data[j].qxqxxingzhi);
+  }
+};
 //数据去重
 var typelistunique=arrayUnique(typelist);
 //获取缺陷类别次数

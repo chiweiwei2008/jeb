@@ -60,6 +60,6 @@
 
 <view class="container" style="margin-top:20px;">
     <mp-loading type="circle" show="{{show}}"></mp-loading>   
-    <canvas canvas-id="lineCanvas" disable-scroll="true" class="canvas" bindtouchstart="touchHandler" bindtouchmove="moveHandler" bindtouchend="touchEndHandler"></canvas>
+    <canvas canvas-id="lineCanvas" disable-scroll='{{false}}'  class="canvas" bindtouchstart="touchHandler" bindtouchmove="moveHandler" bindtouchend="touchEndHandler"></canvas>
     <view style="margin-top:30px;text-align:center">拖动图表查看</view>
 </view>

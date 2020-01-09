@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/login/login",
     "pages/index/index",
+    "pages/login/login",
     "pages/pms/pms",
     "pages/yunxingfenxi/yunxingfenxi",
     "pages/logs/logs",
@@ -15,6 +15,7 @@
     "pages/user/user",
     "pages/development/development",
     "pages/jianxiujuece/jueceitem/jueceitem"
+   
   ],
   "tabBar": {
     "color": "#a9b7b7",

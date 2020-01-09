@@ -1,7 +1,5 @@
-var app = getApp();
 var wxCharts = require('../../utils/wxcharts.js');
 var lineChart = null;
-var startPos = null;
 Page({
   data: {
     sbsblx: '',
@@ -100,18 +98,18 @@ Page({
     this.onLoad();
   },
   onLoad: function (e) {
-  //权限认证
-    wx.getStorage({
-      key: 'userObj',
-      success: function (userObj) {
-        console.log('用户已登录！');
-      },
-      fail: function (e) {
-        wx.redirectTo({
-          url: '../login/login'
-        })
-      }
-    })
+  // //权限认证
+  //   wx.getStorage({
+  //     key: 'userObj',
+  //     success: function (userObj) {
+  //       console.log('用户已登录！');
+  //     },
+  //     fail: function (e) {
+  //       wx.redirectTo({
+  //         url: '../login/login'
+  //       })
+  //     }
+  //   })
 
     //调用云函数
     var that = this;

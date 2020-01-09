@@ -16,7 +16,10 @@ Page({
     evaluationlist:[],//状态评价异常设备数组
     abnormalnumber:0,//经历异常工况设备数量
     abnormallist:[],//经历异常工况设备数组
-
+    ratednumber:0,//额定不足备件数量
+    ratedlist:[],//额定不足备件数组
+    usednumber:[],//使用后不足备件数量
+    usedlist:[],//使用后不足备件数组
   },
 
   /**
@@ -24,17 +27,17 @@ Page({
    */
   onLoad: function (options) {
     //权限认证
-    wx.getStorage({
-      key: 'userObj',
-      success: function (userObj) {
-        console.log('用户已登录！');
-      },
-      fail: function (e) {
-        wx.redirectTo({
-          url: '../login/login'
-        })
-      }
-    })
+    // wx.getStorage({
+    //   key: 'userObj',
+    //   success: function (userObj) {
+    //     console.log('用户已登录！');
+    //   },
+    //   fail: function (e) {
+    //     wx.redirectTo({
+    //       url: '../login/login'
+    //     })
+    //   }
+    // })
 
 
     //调用云函数
@@ -103,6 +106,31 @@ Page({
       fail:console.error
 
     })
+
+
+    //3.调用云函数getSpare
+    wx.cloud.callFunction({
+      name:'getSpare',
+      data:{},
+      success:function(res){
+        console.log(res);
+        that.setData({
+          ratednumber:res.result[0].length,
+          ratedlist:res.result[0],
+          usednumber:res.result[1].length,
+          usedlist:res.result[1]
+          });
+          wx.setStorage({
+            data: res.result[0],
+            key: 'ratedlist',
+          });
+          wx.setStorage({
+            data: res.result[1],
+            key: 'usedlist',
+          });
+      },
+      fail:console.error
+    });
   
   },
 
@@ -158,6 +186,18 @@ Page({
     });
     wx.removeStorage({
       key: 'abnormallist',
+      success (res) {
+        console.log('移除缺陷缓存成功!')
+      }
+    });
+    wx.removeStorage({
+      key: 'ratedllist',
+      success (res) {
+        console.log('移除缺陷缓存成功!')
+      }
+    });
+    wx.removeStorage({
+      key: 'usedllist',
       success (res) {
         console.log('移除缺陷缓存成功!')
       }

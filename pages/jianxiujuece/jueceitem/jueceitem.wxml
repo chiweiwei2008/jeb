@@ -1,22 +1,43 @@
 <!--pages/jianxiujuece/jueceitem/jueceitem.wxml-->
 <view style="font-size: 20px;font-weight: 700;text-align:center">
-			<text>{{titlename}}</text>
-		</view>
+	<text>{{titlename}}</text>
+</view>
 
 <mp-cells ext-class="my-cells" wx:if="{{showone}}">
-  <block wx:for="{{datalist}}" wx:for-item="dataitem" wx:key="_id">
-    <mp-cell >
-        <view>{{dataitem.bdzname}}</view>
-        <view slot="footer">{{dataitem.yxbhname}}</view>
-    </mp-cell>
-  </block>
+	<mp-cell>
+		<view>变电站名称</view>
+		<view slot="footer" style="color:black">运行编号</view>
+	</mp-cell>
+	<block wx:for="{{datalist}}" wx:for-item="dataitem" wx:key="_id">
+		<mp-cell>
+			<view>{{dataitem.bdzname}}</view>
+			<view slot="footer">{{dataitem.yxbhname}}</view>
+		</mp-cell>
+	</block>
 </mp-cells>
 
 <mp-cells ext-class="my-cells" wx:if="{{showtwo}}">
-  <block wx:for="{{datalist}}" wx:for-item="dataitem" wx:key="_id">
-    <mp-cell >
-        <view>{{dataitem.bdzname}}</view>
-        <view slot="footer">{{dataitem.sbyxbh}}</view>
-    </mp-cell>
-  </block>
+	<mp-cell>
+		<view>变电站名称</view>
+		<view slot="footer" style="color:black">运行编号</view>
+	</mp-cell>
+	<block wx:for="{{datalist}}" wx:for-item="dataitem" wx:key="_id">
+		<mp-cell>
+			<view>{{dataitem.bdzname}}</view>
+			<view slot="footer">{{dataitem.sbyxbh}}</view>
+		</mp-cell>
+	</block>
+</mp-cells>
+
+<mp-cells ext-class="my-cells" wx:if="{{showthree}}">
+	<mp-cell>
+		<view>名称</view>
+		<view slot="footer" style="color:black">型号</view>
+	</mp-cell>
+	<block wx:for="{{datalist}}" wx:for-item="dataitem" wx:key="_id">
+		<mp-cell>
+			<view>{{dataitem.sparename}}</view>
+			<view slot="footer">{{dataitem.sparetype}}</view>
+		</mp-cell>
+	</block>
 </mp-cells>
