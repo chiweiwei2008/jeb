@@ -96,6 +96,12 @@ Page({
         code: '11'
       },
       {
+        name: '说明书、图纸',
+        url: '../instructions/instructions',
+        icon: 'img/10.jpg',
+        code: '11'
+      },
+      {
         name: '在线测试',
         url: '../tiku/title',
         icon: 'img/5.png',
@@ -107,7 +113,6 @@ Page({
         icon: 'img/9.jpg',
         code: '11'
       }
-      
     ]
 
   },

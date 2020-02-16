@@ -1,0 +1,36 @@
+<!--pages/instructions/instructions.wxml-->
+<view class="container">
+<view class="searchtop">
+<view class="search">  
+<input type="text" placeholder="请输入说明书、图纸名称" class="search-input" name="searchKeyword" bindinput="bindKeywordInput" value="{{searchKeyword}}" />  
+</view>
+<view class="viewName" style="background-color:#fbf9fe">
+  <button class="loginBtn" bindtap="searchBtnClick">查询</button>
+</view>
+</view>
+<official-account class="gzhstyle"></official-account>
+<!--搜索显示列表  -->
+<view class="tablelist">
+<view class="tabletitle">
+<view class="tablethone">序号</view>
+<view class="tablethtwo">说明书、图纸名称</view>
+</view>
+</view>
+<view class="tablelist">
+<view class="search-result">
+    <scroll-view scroll-y="true"  bindscrolltolower="searchScrollLower"  class="scrollcss" lower-threshold="50" >
+      <view class="result-item" wx:for="{{showDatalist}}" wx:key="_id"  wx:for-index="index" wx:for-item="item" data-index="{{index}}" bindtap="clickItem">
+    <view class="tr bg-g" wx:if="{{index % 2 == 0}}">
+      <view class="tdone">{{item._id}}</view>
+      <view class="tdtwo">{{item.insname}}</view>
+    </view>
+      <view class="tr" wx:else>
+     <view class="tdone">{{item._id}}</view>
+      <view class="tdtwo">{{item.insname}}</view>
+    </view> 
+      </view>
+    </scroll-view>  
+  </view>
+</view>
+</view>
+

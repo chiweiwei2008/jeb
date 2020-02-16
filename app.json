@@ -14,8 +14,9 @@
     "pages/pmsitem/pmsitem",
     "pages/user/user",
     "pages/development/development",
-    "pages/jianxiujuece/jueceitem/jueceitem"
-   
+    "pages/jianxiujuece/jueceitem/jueceitem",
+    "pages/instructions/instructions",
+    "pages/edition/edition"
   ],
   "tabBar": {
     "color": "#a9b7b7",
