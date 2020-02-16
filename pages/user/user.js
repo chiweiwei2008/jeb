@@ -17,22 +17,22 @@ Page({
     grids: [{
         "title": "台帐修改",
         "pageUrl": "../development/development",
-        "imgUrl": "img/1.jpg"
+        "imgUrl": "https://706d-pmis-4c63d-1300406220.tcb.qcloud.la/img/user/1.jpg"
       },
       {
         "title": "任务单",
         "pageUrl": "../development/development",
-        "imgUrl": "img/2.jpg"
+        "imgUrl": "https://706d-pmis-4c63d-1300406220.tcb.qcloud.la/img/user/2.jpg"
       },
       {
         "title": "账户管理",
         "pageUrl": "../development/development",
-        "imgUrl": "img/3.jpg"
+        "imgUrl": "https://706d-pmis-4c63d-1300406220.tcb.qcloud.la/img/user/3.jpg"
       },
       {
         "title": "权限设置",
         "pageUrl": "../development/development",
-        "imgUrl": "img/4.jpg"
+        "imgUrl": "https://706d-pmis-4c63d-1300406220.tcb.qcloud.la/img/user/4.jpg"
       }
     ]
   },

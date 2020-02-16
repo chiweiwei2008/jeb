@@ -3,7 +3,7 @@
 <view class="container">
 	<view class="head">
 		<view class="userimg">
-			<image src="{{(avatarUrl==='')?'img/head.jpg':avatarUrl}}"></image>
+			<image src="{{(avatarUrl==='')?'https://706d-pmis-4c63d-1300406220.tcb.qcloud.la/img/user/head.jpg':avatarUrl}}"></image>
 		</view>
 		<view class="usertxt">
 			<text bindtap="loginOn">{{(nickName==='')?'您还未登录，点击登录！！':nickName+'，欢迎您回来！'}}</text>

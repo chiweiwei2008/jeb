@@ -1,7 +1,7 @@
 <!--pages/login/login.wxml-->
 <view class="container"> 
  <view class="login-icon"> 
- <image class="login-img" src="img/loginLog.jpg"></image> 
+ <image class="login-img" src="https://706d-pmis-4c63d-1300406220.tcb.qcloud.la/img/login/loginLog.jpg"></image> 
  </view> 
  <view class="login-from"> 
   

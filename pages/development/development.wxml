@@ -1,6 +1,6 @@
 <!--pages/development/development.wxml-->
  <view class="container">
 <view class='jeberweima'>
-<image  src='img/development.jpeg' style='height:530rpx;width:620rpx;' mode="widthFix" ></image>
+<image  src='https://706d-pmis-4c63d-1300406220.tcb.qcloud.la/img/development/development.jpeg' style='height:530rpx;width:620rpx;' mode="widthFix" ></image>
 </view>
 </view>

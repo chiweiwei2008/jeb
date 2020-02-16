@@ -56,61 +56,61 @@ Page({
       {
         name: '台账查询',
         url: '../pms/pms',
-        icon: 'img/1.png',
+        icon: 'https://706d-pmis-4c63d-1300406220.tcb.qcloud.la/img/1.png',
         code: '10'
       },
       {
         name: '运行数据分析',
         url: '../yunxingfenxi/yunxingfenxi',
-        icon: 'img/2.png',
+        icon: 'https://706d-pmis-4c63d-1300406220.tcb.qcloud.la/img/2.png',
         code: '11'
       },
       {
         name: '缺陷分析',
         url: '../quexianfenxi/quexianfenxi',
-        icon: 'img/3.png',
+        icon: 'https://706d-pmis-4c63d-1300406220.tcb.qcloud.la/img/3.png',
         code: '10'
       },
       {
         name: 'SF6在线监测',
         url: '../yali/yali',
-        icon: 'img/4.png',
+        icon: 'https://706d-pmis-4c63d-1300406220.tcb.qcloud.la/img/4.png',
         code: '11'
       },
       {
         name: '油色谱',
         url: '../yousepu/yousepu',
-        icon: 'img/8.png',
+        icon: 'https://706d-pmis-4c63d-1300406220.tcb.qcloud.la/img/8.png',
         code: '10'
       },
       {
         name: '机械特性',
         url: '../jixietexing/jixietexing',
-        icon: 'img/6.png',
+        icon: 'https://706d-pmis-4c63d-1300406220.tcb.qcloud.la/img/6.png',
         code: '11'
       },
       {
         name: '检修决策',
         url: '../jianxiujuece/jianxiujuece',
-        icon: 'img/7.png',
+        icon: 'https://706d-pmis-4c63d-1300406220.tcb.qcloud.la/img/7.png',
         code: '11'
       },
       {
         name: '说明书、图纸',
         url: '../instructions/instructions',
-        icon: 'img/10.jpg',
+        icon: 'https://706d-pmis-4c63d-1300406220.tcb.qcloud.la/img/10.jpg',
         code: '11'
       },
       {
         name: '在线测试',
         url: '../tiku/title',
-        icon: 'img/5.png',
+        icon: 'https://706d-pmis-4c63d-1300406220.tcb.qcloud.la/img/5.png',
         code: '11'
       },
       {
         name: 'more',
         url: '../more/more',
-        icon: 'img/9.jpg',
+        icon: 'https://706d-pmis-4c63d-1300406220.tcb.qcloud.la/img/9.jpg',
         code: '11'
       }
     ]
