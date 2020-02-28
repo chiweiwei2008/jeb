@@ -76,6 +76,7 @@ Page({
     },
    //打开对应说明书
    clickItem:function(e){
+      wx.showLoading({title: '文件加载中...',})
       wx.downloadFile({
           // 示例 url，并非真实存在
           url: this.data.showDatalist[e.currentTarget.dataset.index].inshttp,
@@ -84,7 +85,8 @@ Page({
             wx.openDocument({
               filePath: filePath,
               success: function (res) {
-                console.log('打开文档成功')
+                wx.hideLoading()
+                //console.log('打开文档成功')
               }
             })
           }
