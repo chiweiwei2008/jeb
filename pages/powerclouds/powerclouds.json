@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "scroll-view-refresh-load": "/components/scroll-view-refresh-load/scroll-view-refresh-load",
+    "component-pagenumber": "/components/page-number/page-number"
+    
+  },
+  "navigationBarTitleText": "电力云powerclouds"
+}

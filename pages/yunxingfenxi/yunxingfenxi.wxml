@@ -1,5 +1,5 @@
 <!--bigdata.wxml-->
-<view class="container">
+<view class="container" wx:if="{{loginshow}}">
   <p class="biaoti">一、设备总体情况</p>
   <text space="emsp">  截止<text class="red">{{datetime}}</text>，国网河北检修公司共有在运设备<text class="red">{{pmstotal}}</text>台/组，各设备类型数量分布如下：</text>
   <view class="title" style="font-size: 14px;font-weight: 700;">

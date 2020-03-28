@@ -1,5 +1,5 @@
 <!--index.wxml-->
-<view class="container">
+<view class="container" wx:if="{{loginshow}}">
 <!--变电站名称  -->
 <view class='list-msg'>
     <view class='list-msg1'>

@@ -1,0 +1,3 @@
+<!--packageA/pages/index/index.wxml-->
+<!-- 测试分包 -->
+<web-view src="https://mp.weixin.qq.com/s/oPgb_707shpuje6qbFKgzQ" />

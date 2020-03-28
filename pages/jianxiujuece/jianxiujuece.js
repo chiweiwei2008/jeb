@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    
+    loginshow:false,//没有登录时不能查看
     defectnumber:0,//缺陷超过2次的设备数量
     defectlist:[],//缺陷设备数组
     repairnumber:0,//超检修周期数量
@@ -26,18 +26,23 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    //权限认证
-    // wx.getStorage({
-    //   key: 'userObj',
-    //   success: function (userObj) {
-    //     console.log('用户已登录！');
-    //   },
-    //   fail: function (e) {
-    //     wx.redirectTo({
-    //       url: '../login/login'
-    //     })
-    //   }
-    // })
+    // 权限认证
+    var that=this
+    wx.getStorage({
+      key: 'userObj',
+      success: function (userObj) {
+        // console.log('用户已登录！');
+        that.setData({
+          loginshow:true
+        })
+
+      },
+      fail: function (e) {
+        wx.redirectTo({
+          url: '../login/login'
+        })
+      }
+    })
 
 
     //调用云函数

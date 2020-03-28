@@ -3,6 +3,7 @@ var wxCharts = require('../../utils/wxcharts.js');
 var lineChart = null;
 Page({
   data: {
+    loginshow:false,//没有登录时不能查看
     sbsblx:'',
     sbsblxlist: [],
     sbyxbh:'',
@@ -150,18 +151,23 @@ Page({
 
   onLoad: function (e) {
 
-    //  //权限认证
-    //  wx.getStorage({
-    //   key: 'userObj',
-    //   success: function (userObj) {
-    //     console.log('用户已登录！');
-    //   },
-    //   fail: function (e) {
-    //     wx.redirectTo({
-    //       url: '../login/login'
-    //     })
-    //   }
-    // });
+  // 权限认证
+    var that=this
+    wx.getStorage({
+      key: 'userObj',
+      success: function (userObj) {
+        // console.log('用户已登录！');
+        that.setData({
+          loginshow:true
+        })
+
+      },
+      fail: function (e) {
+        wx.redirectTo({
+          url: '../login/login'
+        })
+      }
+    })
     
     var that=this;
     wx.cloud.init();

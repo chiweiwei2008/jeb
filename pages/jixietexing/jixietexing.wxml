@@ -1,4 +1,4 @@
-<view class="container" >
+<view class="container" wx:if="{{show}}">
    <!--变电站名称  -->
    <view style="font-size: 18px;font-weight: 700;"><text>断路器机械特性分析系统</text></view>
      <view class='list-msg'>

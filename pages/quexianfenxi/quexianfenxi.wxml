@@ -1,5 +1,5 @@
 <!--pages/yunxingshuju/yunxingshuju.wxml-->
-<view class="container">
+<view class="container" wx:if="{{loginshow}}">
 	<!--设备类型  -->
 	<view class='list-msg' style="margin-top:20rpx;">
 		<view class='list-msg1'>

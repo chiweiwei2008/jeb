@@ -1,0 +1,6 @@
+/* components/page-number/page-number.wxss */
+.pagenumber {
+  text-align: center;
+  color: #979797;
+  font-size: 28rpx;
+}

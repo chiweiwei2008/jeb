@@ -16,7 +16,17 @@
     "pages/development/development",
     "pages/jianxiujuece/jueceitem/jueceitem",
     "pages/instructions/instructions",
-    "pages/edition/edition"
+    "pages/edition/edition",
+    "pages/powerclouds/powerclouds",
+    "pages/powerclouds/webview/webview"
+  ],
+  "subPackages": [
+    {
+      "root": "packageA",
+      "pages": [
+        "pages/index/index"
+      ]
+    }
   ],
   "tabBar": {
     "color": "#a9b7b7",

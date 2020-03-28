@@ -1,4 +1,4 @@
-<view class="container">
+<view class="container" wx:if="{{loginshow}}">
 	<!--变电站名称  -->
 	<view style="font-size: 18px;font-weight: 700;"><text>绝缘油色谱分析系统</text></view>
 	<view class='list-msg'>

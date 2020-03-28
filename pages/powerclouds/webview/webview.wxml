@@ -1,0 +1,2 @@
+<!--pages/powerclouds/webview/webview.wxml-->
+<web-view src="{{newsUrl}}"></web-view>

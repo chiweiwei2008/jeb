@@ -19,6 +19,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    loginshow:false,//没有登录时不能查看
     chartTitle: '国网河北检修公司在运设备分布情况',
     isMainChartDisplay: true,
     shebeilist: [],
@@ -38,18 +39,23 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    //权限认证
-    // wx.getStorage({
-    //   key: 'userObj',
-    //   success: function (userObj) {
-    //     console.log('用户已登录！');
-    //   },
-    //   fail: function (e) {
-    //     wx.redirectTo({
-    //       url: '../login/login'
-    //     })
-    //   }
-    // })
+   // 权限认证
+    var that=this
+    wx.getStorage({
+      key: 'userObj',
+      success: function (userObj) {
+        // console.log('用户已登录！');
+        that.setData({
+          loginshow:true
+        })
+
+      },
+      fail: function (e) {
+        wx.redirectTo({
+          url: '../login/login'
+        })
+      }
+    })
 
 
     // 调用云函数

@@ -3,6 +3,7 @@
 const app = getApp();
 Page({
   data: {
+    loginshow:false,//没有登录时不能查看
     showDatalist:[],
     searchDatalist: [],
     select:false,
@@ -23,18 +24,23 @@ Page({
   },
 
   onLoad: function () {
-    // //权限认证
-    // wx.getStorage({
-    //   key: 'userObj',
-    //   success: function (userObj) {
-    //     console.log('用户已登录！');
-    //   },
-    //   fail: function (e) {
-    //     wx.redirectTo({
-    //       url: '../login/login'
-    //     })
-    //   }
-    // })
+      // 权限认证
+      var that=this
+      wx.getStorage({
+        key: 'userObj',
+        success: function (userObj) {
+          // console.log('用户已登录！');
+          that.setData({
+            loginshow:true
+          })
+  
+        },
+        fail: function (e) {
+          wx.redirectTo({
+            url: '../login/login'
+          })
+        }
+      })
 
     wx.cloud.init();
     var that = this;

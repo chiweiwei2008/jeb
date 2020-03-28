@@ -1,0 +1,4 @@
+<!--components/page-number/page-number.wxml-->
+<view class="pagenumber">
+<view>Copyright © powerclouds.net 点击获取更多</view>
+</view>

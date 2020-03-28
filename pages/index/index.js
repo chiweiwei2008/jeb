@@ -54,6 +54,12 @@ Page({
     //九宫格布局数据
     routers: [
       {
+        name: '电力云',
+        url: '../powerclouds/powerclouds',
+        icon: 'https://706d-pmis-4c63d-1300406220.tcb.qcloud.la/img/powerclouds/powerclouds1.png?sign=49217a72b5be8b0a3beb0731f2bcf5a7&t=1584197381',
+        code: '11'
+      },
+      {
         name: '台账查询',
         url: '../pms/pms',
         icon: 'https://706d-pmis-4c63d-1300406220.tcb.qcloud.la/img/1.png',

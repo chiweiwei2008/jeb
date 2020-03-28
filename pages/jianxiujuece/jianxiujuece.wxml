@@ -1,5 +1,5 @@
 <!--pages/jianxiujuece/jianxiujuece.wxml-->
-<view class="page">
+<view class="page" wx:if="{{loginshow}}">
 	<view class="page__hd">
 		<view style="font-size: 20px;font-weight: 700;text-align:center">
 			<text>检修辅助决策系统</text>
