@@ -1,4 +1,6 @@
 const app = getApp()
+// const HTTP = 'http://127.0.0.1:8000/weixin/'
+const HTTP = 'https://www.powerclouds.net/weixin/'
 
 Page({
   data: {
@@ -49,7 +51,7 @@ Page({
         article_type_id:3
      }
     ],
-    tapID: 1, // 判断是否选中
+    tapID:"", // 判断是否选中
     contentNewsList: [
       {
         pic_url:"https://mmbiz.qpic.cn/mmbiz_png/Pic9YFuHEvibdJy2tupYIJOfcA7Tgc12Zv2ZcKEDcMxfCwjVJby4QMl5f582nWg7JykXmzHIaiaCpJWQZPVrBpwpQ/0?wx_fmt=png",
@@ -63,7 +65,7 @@ Page({
     ],
     showPagenumber: true,
     refreshing: false,
-    article_type:'电力人',
+    article_type:'',
     page_number:1
   },
   // banner 数字下标
@@ -108,7 +110,7 @@ Page({
   getArticleType:function () {
     var that=this
     wx.request({
-      url: 'https://www.powerclouds.net/weixin/getarticletype', //接口地址
+      url: HTTP+'getarticletype', //接口地址
       data: {
        
       },
@@ -134,7 +136,7 @@ Page({
   getArticleTop:function () {
     var that=this
     wx.request({
-      url: 'https://www.powerclouds.net/weixin/getarticletop', //接口地址
+      url: HTTP+'getarticletop', //接口地址
       data: {
       
       },
@@ -180,7 +182,7 @@ Page({
     this.getArticleTop()
     var that=this
     wx.request({
-      url: 'https://www.powerclouds.net/weixin/getarticle', //接口地址
+      url: HTTP+'getarticle', //接口地址
       data: {
         article_type: that.data.article_type,
         page_number: that.data.page_number,
