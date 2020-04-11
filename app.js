@@ -1,7 +1,27 @@
 //app.js
 App({
   onLaunch: function () {
-  
+         //查看当前用户是否已经授权
+         wx.getSetting({
+          success: res => {
+            if (res.authSetting['scope.userInfo']) {
+              // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
+              wx.getUserInfo({
+                success: res => {
+                  // 授权成功后，直接将信息传到全局变量中
+                  this.globalData.userInfo = res.userInfo
+                  // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
+                  // 所以此处加入 callback 以防止这种情况
+                  if (this.userInfoReadyCallback) {
+                    this.userInfoReadyCallback(res)
+                  }
+                }
+              })
+            }else{
+              return;
+            }
+          }
+        })
   },
   // 引入`towxml3.0`解析方法
     towxml:require('/towxml/index'),
@@ -20,6 +40,8 @@ App({
       }
     });
     },
+
+
 
   onHide:function(){
     

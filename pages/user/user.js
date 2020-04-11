@@ -15,8 +15,8 @@ Page({
 
     //功能列表    
     grids: [{
-        "title": "台帐修改",
-        "pageUrl": "../development/development",
+        "title": "留言管理",
+        "pageUrl": "../../packageA/pages/index/index",
         "imgUrl": "https://706d-pmis-4c63d-1300406220.tcb.qcloud.la/img/user/1.jpg"
       },
       {

@@ -1,0 +1,125 @@
+<!--packageA/pages/addarticle/addarticle.wxml-->
+
+<view class='gong-content'>
+	<view>
+		<image class='gong-img' src="{{gongMessage['head_path']}}"></image>
+	</view>
+	<view class='gong-message'>
+		<view class='gong-name'>{{gongMessage['gong_name']}}</view>
+		<view class='gong-describe'>{{gongMessage['describes']}}</view>
+	</view>
+</view>
+<!-- 公众号文章信息填写 -->
+<!-- <view class='title-container'>  
+  <view>发布文章</view>
+</view> -->
+
+<view class="tui-accordion-content">
+	<view class="tui-menu-list {{isShowFrom1 ? 'tui-shangjiantou' : 'tui-xiajiantou'}}">
+		<view class='from-bg' bindtap="showFrom" data-param="1" style='text-align: center;'><text style='margin-left:20rpx; text-align: center;'>点击空白处隐藏/显示</text></view>
+		<view class="tui-accordion-from {{isShowFrom1 ? 'tui-show' : 'tui-hide'}}">
+			<view class="tui-menu-list tui-clear">
+				<view class='img-container'>
+					上传文章图片链接
+					<textarea class='textarea-style' bindinput='getimgUrl' placeholder='将复制的图片链接粘贴到此处' placeholder-style='font-size: 32rpx; background-color: #ccc;' maxlength='500' value='{{imgUrl}}'>
+  </textarea>
+				</view>
+			</view>
+
+			<view class="tui-menu-list tui-clear">
+				<view class='articel-messages'>
+					<view class='title'><label>标题:</label></view>
+					<view class='top-20'>
+						<input class='input-style1' placeholder="请输入文章标题" placeholder-style='color:#eee; font-size: 32rpx;' maxlength='30' name="title" value='{{articleTitle}}' bindinput='titleInput' />
+					</view>
+				</view>
+
+				<view class="tui-menu-list tui-clear">
+					<view class='articel-messages'>
+						<view class='des'><label>简介:</label></view>
+						<view class='descrbe'>
+							<input class='input-style1' placeholder="请输入文章简介" placeholder-style='color:#eee; font-size: 32rpx;' name="describe" bindinput='describeInput' value='{{articleDescribe}}' maxlength='50' />
+						</view>
+					</view>
+
+				</view>
+				<view class="tui-menu-list tui-clear">
+					<view class='articel-messages'>
+						<view class='des'><label>链接:</label></view>
+						<view class='descrbe'>
+							<textarea style='border:solid 1px #ccc; width:550rpx' class='textarea-style' bindinput='getarticleUrl'  placeholder-style='font-size: 32rpx; background-color: #ccc;' maxlength='500' value='{{articleUrl}}'>
+  </textarea>
+						</view>
+					</view>
+
+				</view>
+
+
+				<view class="tui-menu-list tui-clear" style="text-align:center;padding-top:20rpx;">
+					<view>
+						<form name='pushMsgF'>
+							<button form-type="submit" class='post-atical-messages' bindtap='submitdata'>提交文章</button>
+						</form>
+					</view>
+				</view>
+			</view>
+		</view>
+	</view>
+
+
+	<!-- 显示图片 -->
+	<!-- <view class='img-container' bindtap='chooseimage'>
+  点击该区域上传文章图片
+  <image class='display-img' src='{{tempFilePath}}'></image>
+</view> -->
+	<!-- <view class='articel-messages'>
+  <view class='top-20'>
+    <input class='input-style1'
+      placeholder="请输入文章标题" 
+      placeholder-style='color:#eee; font-size: 32rpx;'
+      maxlength='30'
+      name="title"
+      bindinput='titleInput'/>
+  </view> -->
+
+	<!-- 文章描述输入框 -->
+	<!-- <view class='top-20'>
+    <input class='input-style1'
+      placeholder="请输入文章简介" 
+      placeholder-style='color:#eee; font-size: 32rpx;'
+      name="describe"
+      bindinput='describeInput'
+      maxlength='50'/>
+  </view> -->
+
+	<!-- 分隔符 -->
+	<view class='line'></view>
+
+	<!-- <view>
+    <button class='post-atical-messages' bindtap='submitdata'>提交文章</button>
+  </view> -->
+</view>
+
+<view class="remind-copy">长按已发表文章,复制文章路径</view>
+<!-- 已发表文章 -->
+<block wx:for="{{articleList}}" wx:for-item="item">
+	<view class='article-container'  bindlongtap='copy' data-id="{{item.id}}">
+		<!-- 图片 -->
+		<view bindtap="onclick"  data-id="{{item.id}}">
+			<image class='article-img' src='{{item.imageUrl}}'></image>
+		</view>
+
+		<!-- 文章信息 -->
+		<view class='articelinfo' bindtap="onclick"  data-id="{{item.id}}">
+			<view class='articel-title'>{{item.title}}</view>
+			<view class='articel-descript'>{{item.describes}}</view>
+		</view>
+
+		<!-- 编辑和删除 -->
+		<view class='articel-opertor'>
+			<button class='complie' bindtap='editArticle' data-id="{{item.id}}">编辑</button>
+			<button class='delete' bindtap='deleteArticle' data-id="{{item.id}}">删除</button>
+		</view>
+		<text selectable='true'></text>
+	</view>
+</block>

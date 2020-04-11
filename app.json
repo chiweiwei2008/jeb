@@ -24,7 +24,13 @@
     {
       "root": "packageA",
       "pages": [
-        "pages/index/index"
+        "pages/index/index",
+        "pages/message/message",
+        "pages/addmessage/addmessage",
+        "pages/addarticle/addarticle",
+        "pages/changemessage/changemessage",
+        "pages/viewarticle/viewarticle",
+        "pages/registration/registration"
       ]
     }
   ],

@@ -1,0 +1,89 @@
+<!--packageA/pages/changemessage/changemessage.wxml-->
+<block wx:for="{{articlecontent}}" wx:for-item="item" >
+  <view bindtap='onclick' data-articleurl="{{item.articleUrl}}">
+    <!-- 文章发表时间 -->
+    <view class='wite-space'></view>
+    <view class='artical-time'>{{item.date}}</view>
+    <!-- 文章图片、标题、描述 -->
+    <view class='artical-container'>
+          <!-- 文章标题 -->
+      <view class='artical-title'>标题：{{item.title}}</view>
+      <!-- 文章图片 -->
+      <view class='artical-img-container'>
+        <image class='artical-img' src="{{item.imageUrl}}"></image>
+      </view>
+
+      <!-- 文章描述 -->
+      <view class='artical-describe'><view class="describe1">简介：{{item.describes}}</view></view>
+    </view>
+  </view>
+</block>
+<view class='space'></view>
+
+<!-- “用户留言文字” -->
+<view class='user-message'>用户留言</view>
+
+<!-- 空白 -->
+<view class='space'></view>
+
+<!-- 留言内容 作者回复  {{item.headimage}} {{item.username}} {{item.userMesContent}}-->
+<block wx:for="{{messages}}" wx:key="key" wx:for-item="item" wx: for-index="index">
+	<view class='backgroundcolor'>
+		<view class='message-content'>
+			<!-- 用户头像 -->
+			<view class='head-container'>
+				<image class='user-hear-style' src=' {{item.avatarUrl}}'></image>
+			</view>
+
+			<!-- 用户名与留言内容 -->
+			<view class='username-message'>
+				<view class='username'>{{item.username}}</view>
+				<view class='message'> {{item.message}}</view>
+				<!-- 作者回复 -->
+				<block wx:if="{{authorBool[index]}}">
+					<view>
+						<!-- 回复图标 -->
+						<view class='reply-container'>
+							<view class='autor-reply-line'></view>
+							<view class='author-text'>作者</view>
+						</view>
+						<!-- 作者回复内容  -->
+						<view class='author-reply-message'>{{authormessages[index]}}</view>
+					</view>
+				</block>
+			</view>
+
+			<!-- 作者回复提交 -->
+			<view class='reply_container'>
+				<block wx:if="{{!authorBool[index]}}">
+					<form name='pushMsgFm'>
+						<button form-type="submit" class='btn_reply' bindtap="showModal" data-id="{{item.id}}">回复</button>
+						<!-- <button form-type="submit" bindtap="showModal" data-index="{{index}}">回复</buttton> -->
+					</form>
+				</block>
+				<block wx:if="{{!isChoose[index]}}">
+					<view bindtap='choose' class='jinxuanblue' data-id='{{item.id}}'>设置精选</view>
+				</block>
+				<block wx:if="{{isChoose[index]}}">
+					<view bindtap='cancelChoose' class='jinxuanred' data-id='{{item.id}}'>取消精选</view>
+				</block>
+				<!-- 置顶 -->
+				<block wx:if="{{!isTop[index]}}">
+					<view bindtap='settop' class='jinxuanblue' data-id='{{item.id}}'>留言置顶</view>
+				</block>
+				<!-- 取消置顶 -->
+				<block wx:if="{{isTop[index]}}">
+					<view bindtap='canceltop' class='jinxuanred' data-id='{{item.id}}'>取消置顶</view>
+				</block>
+				<view bindtap='deleteMessage' class='delete' data-id='{{item.id}}'>删除</view>
+			</view>
+		</view>
+	</view>
+</block>
+
+<view>
+	<modal title="回复 读者" style='color: #000;font-size: 32rpx;' hidden="{{modalHidden}}" confirm-text="确定" cancel-text="取消" bindconfirm="modalBindaconfirm" bindcancel="modalBindcancel">
+		<view class='reply-content'>回复内容所有人可见</view>
+		<input bindinput='getInputContent' class='reply-input' placeholder='请输入点什么...' value='{{inputContentxml}}' placeholder-style='font-size: 28rpx;'></input>
+	</modal>
+</view>

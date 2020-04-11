@@ -1,0 +1,289 @@
+/* packageA/pages/message/message.wxss */
+
+.wite-space{
+  width: 100%;
+  height: 40rpx;
+  background-color: rgba(238, 238, 238, 0.281);
+}
+
+/* 文章发表时间 */
+.artical-time{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  font-size: 28rpx;
+  padding-bottom: 15rpx;
+  align-items: center;
+  color: rgb(201, 200, 200);
+  background-color: #F5F5F5;
+}
+
+/* 文章容器container */
+.artical-container{
+  width: 100%;
+  background-color: #fff;
+}
+
+/* 文章插图容器 */
+.artical-img-container{
+   display: flex;
+   flex-direction: column;
+   width: 100%;
+   align-items: center;
+}
+
+/* 图片内容 */
+.artical-img{
+  display: flex;
+}
+
+/* 文章标题 */
+.artical-title{
+  width: 100%;
+  font-size: 36rpx;
+  font-family: '微软雅黑';
+  color: black;
+  padding-top: 10rpx;
+  padding-left: 10rpx;
+}
+
+/* 文章描述 */
+.artical-describe{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  font-size: 30rpx;
+  font-family: '微软雅黑';
+  color: rgb(199, 198, 198);
+  /* padding-left: 20rpx;
+  padding-top: 10rpx; */
+}
+.describe1{
+  width: 95%;
+}
+
+
+post {
+  float: right;
+  position: fixed;
+  bottom: 40px;
+  right: 40px;  
+  border: 0 solid #ffffff;
+  border-radius: 500px;
+  box-shadow: 4px 1px 1px #cccccc;
+}
+.bottom{
+  width: 80%;
+  color: #fff;
+  margin-top: 40rpx;
+  background: rgb(1, 199, 1);
+}
+page{
+  width: 100%;
+  height: 100%;
+  background-color: #eee;
+}
+
+/* 文章题目 */
+.title-style{
+  font-size: 38rpx;
+  color: #000;
+  font-family: '微软雅黑';
+  padding-left: 20rpx;
+  padding-top: 35rpx;
+  padding-bottom: 40rpx;
+  background-color: #fff;
+}
+
+/* 精选留言背景 */
+.messages-container{
+  width: 100%;
+  /* background: #eee; */
+  margin-top: 40rpx;
+  padding-bottom: 100rpx;
+}
+
+/* 精选留言头部 */
+.head-contain{
+  display: flex;    /*设置布局为flex*/
+  flex-direction: row;/*设置布局方向为row*/
+  width: 100%;
+  height: 100rpx;
+}
+
+/* 精选留言style */
+.select-message{
+  font-size: 34rpx;
+  color: rgb(201, 201, 201);
+  font-family: '微软雅黑';
+  padding-left: 20rpx;
+  padding-top: 50rpx;
+}
+
+/* 写留言style */
+.write-message{
+  font-size: 34rpx;
+  color: rgb(64, 212, 6);
+  font-family: '微软雅黑';
+  padding-left: 465rpx;
+  padding-top: 40rpx;
+}
+
+/* 留言内容container */
+.message-content{
+  display: flex;
+  flex-direction: row;
+  width: 97%;
+  margin-top: 10rpx;
+}
+
+.jiange{
+  padding-bottom: 50rpx;
+}
+
+/* 头像container */
+.head-container{
+  padding-left: 20rpx;
+  padding-top: 10rpx;
+}
+
+/* 用户头像style */
+.user-hear-style{
+  width: 80rpx;
+  height:80rpx;
+}
+
+/* 用户名+留言内容 container */
+.username-message{
+  width: 1000rpx;
+}
+
+/* 横排列 */
+.clumen{
+   display: flex;
+   flex-direction: row;
+}
+
+/* 点赞图标 */
+.ico_zan{
+  width: 120rpx;
+  padding-top: 7rpx;
+}
+
+/* 点赞数 */
+.ico_num{
+  width: 40rpx;
+  padding-right: 25rpx;
+  font-size: 34rpx;
+  padding-top: 2rpx;
+  color: #6688b8;
+}
+
+/* 点赞图标 */
+.zan{
+  width: 65rpx;
+  height: 37rpx;
+}
+
+/* 用户名style */
+.username{
+  font-size: 34rpx;
+  color: rgb(170, 170, 170);
+  font-family: '微软雅黑';
+  padding-left: 20rpx;
+}
+
+/* 置顶 */
+.set-top{
+  width: 60rpx;
+  height: 45rpx;
+  color: #fff;
+  font-size: 28rpx;
+  padding: 0 15rpx 0 15rpx;
+  border-radius: 5rpx;
+  margin-left: 10rpx;
+  margin-top: 8rpx;
+  background-color: rgba(168, 165, 165, 0.61);
+}
+
+/* 用户留言内容 */
+.message{
+  font-size: 34rpx;
+  color: #000;
+  font-family: '微软雅黑';
+  padding-left: 20rpx;
+  padding-top: 6rpx;
+}
+
+/* 作者回复container */
+.reply-container{
+  display: flex;
+  flex-direction: row;
+  margin-left: 115rpx;
+  margin-top: 10rpx;
+}
+
+/* 作者回复图标 */
+.autor-reply-line{
+  width: 6rpx;
+  height: 26rpx;
+  background-color: rgb(76, 250, 7);
+  padding-top: 12rpx;
+}
+
+/* “作者”字体style */
+.author-text{
+  font-size: 32rpx;
+  color: #ccc;
+  font-family: '微软雅黑';
+  padding-left: 10rpx;
+}
+
+/* 作者回复内容信息 */
+.reply-message{
+  width: 80%;
+  font-size: 34rpx;
+  color: #000;
+  font-family: '微软雅黑';
+  padding-left: 115rpx;
+  padding-top: 6rpx;
+}
+
+/* 上间隔10px */
+.top{
+  margin-top: 60rpx;
+}
+
+.message-top{
+  margin-top: 20rpx;
+}
+
+/* 留言信息与底部的距离 */
+.message-bottom{
+  margin-bottom: 100rpx;
+}
+
+.header {
+  margin: 90rpx 0 90rpx 50rpx;
+  border-bottom: 1px solid #ccc;
+  text-align: center;
+  width: 650rpx;
+  height: 300rpx;
+  line-height: 450rpx;
+}
+
+.header image {
+  width: 200rpx;
+  height: 200rpx;
+}
+.content {
+  margin-left: 50rpx;
+  margin-bottom: 90rpx;
+}
+
+.content text {
+  display: block;
+  color: #9d9d9d;
+  margin-top: 40rpx;
+}

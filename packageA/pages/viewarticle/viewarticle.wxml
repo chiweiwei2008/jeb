@@ -1,0 +1,2 @@
+<!--packageA/pages/viewarticle/viewarticle.wxml-->
+<web-view src="{{articleUrl}}"></web-view>
