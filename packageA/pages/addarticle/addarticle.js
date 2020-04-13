@@ -168,23 +168,35 @@ Page({
       var that = this;
       var id = event.currentTarget.dataset.id;
       console.log("文章id"+id)
-      wx.request({
-        url: HTTP+'deletearticle/', 
-        data: {
-          id: id, //文章id
-        },
-        header: {
-          'content-type': 'application/json' // 数据格式（默认值）
-        },
-        method: 'get', //上传方式
-        success: function (res) {   //回调成功
-          console.log(res.data)
-        },
-        //回调失败
-        fail: function (res) {
-          console.log('删除文章失败！')
-        },
-      })          
+      wx.showModal({
+      title: '注意',
+      content: '文章删除后无法恢复，请确认！',
+      success (res) {
+      if (res.confirm) {
+        console.log('用户点击确定')
+        wx.request({
+          url: HTTP+'deletearticle/', 
+          data: {
+            id: id, //文章id
+          },
+          header: {
+            'content-type': 'application/json' // 数据格式（默认值）
+          },
+          method: 'get', //上传方式
+          success: function (res) {   //回调成功
+            console.log(res.data)
+          },
+          //回调失败
+          fail: function (res) {
+            console.log('删除文章失败！')
+          },
+        })     
+      } else if (res.cancel) {
+      console.log('用户点击取消')
+      }
+      }
+      })
+           
     },
     // 点击跳转
     onclick:function (event) {

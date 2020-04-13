@@ -295,45 +295,57 @@ Page({
     var that = this;
     var j_index = event.currentTarget.dataset.id;
     console.log("精选索引：" + event.currentTarget.dataset.id)
-    wx: wx.showToast({
-      title: '正在删除',
-      icon: 'loading'
-    })
-    wx.request({
-      url: HTTP+'choosemessage', //删除留言
-      data: {
-        id: j_index,//留言id
-        deleteflag: true //精选留言标识 
-      },
-      header: {
-        'content-type': 'application/json' // 数据格式（默认值） 
-      },
-      method: 'get', //上传方式
-      success: function (res) {   //回调成功
-        console.log(res.data)
-            wx.showToast({
-              title: '已删除该留言',
-              icon: 'none',
-            })
-            //刷新页面
-            var messlist = that.data.messages;
-            messlist.splice(j_index, 1);
-            //隐藏作者回复
-            that.data.authorBool[j_index] = false
-            that.setData({
-              messages: messlist,
-              authorBool: that.data.authorBool
-            })
-      },
-      //回调失败
-      fail: function (res) {
-        console.log(res)
-        wx.showToast({
-          title: '网络连接失败',
-          icon: 'none',
-        })
-      },
-    })
+    wx.showModal({
+      title: '注意',
+      content: '留言删除后无法恢复，请确认！',
+      success (res) {
+      if (res.confirm) {
+      console.log('用户点击确定')
+      wx: wx.showToast({
+        title: '正在删除',
+        icon: 'loading'
+      })
+      wx.request({
+        url: HTTP+'choosemessage', //删除留言
+        data: {
+          id: j_index,//留言id
+          deleteflag: true //精选留言标识 
+        },
+        header: {
+          'content-type': 'application/json' // 数据格式（默认值） 
+        },
+        method: 'get', //上传方式
+        success: function (res) {   //回调成功
+          console.log(res.data)
+              wx.showToast({
+                title: '已删除该留言，请返回刷新！',
+                icon: 'none',
+              })
+              //刷新页面
+              var messlist = that.data.messages;
+              messlist.splice(j_index, 1);
+              //隐藏作者回复
+              that.data.authorBool[j_index] = false
+              that.setData({
+                messages: messlist,
+                authorBool: that.data.authorBool
+              })
+        },
+        //回调失败
+        fail: function (res) {
+          console.log(res)
+          wx.showToast({
+            title: '网络连接失败',
+            icon: 'none',
+          })
+        },
+      })
+
+      } else if (res.cancel) {
+      console.log('用户点击取消')
+      }
+      }
+      })
   },
   /**
    * 生命周期函数--监听页面加载
