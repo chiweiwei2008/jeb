@@ -155,6 +155,7 @@ Page({
               articleUrl:res.data[0].articleUrl,  // 文章链接 
               editFlag:false,
               editId:id,
+              isShowFrom1:true,
             })
             },
             fail:function () {
@@ -210,7 +211,7 @@ Page({
   onLoad: function (options) {
     // 获取授权公众号信息
     var gongindex = options.gongindex
-    var gongname = options.gongname
+    // var gongname = options.gongname
     var that = this
     var gonginfo = wx.getStorageSync('gongMessage')
     wx.setNavigationBarTitle({

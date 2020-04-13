@@ -339,6 +339,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    // 动态设置Bar
+    var gonginfo = wx.getStorageSync('gongMessage')
+    wx.setNavigationBarTitle({
+      title: gonginfo[0]['gong_name']+'留言板',
+    })
     // 获取文章信息
     var articleid = options.articleid;
     this.getarticle(articleid)
