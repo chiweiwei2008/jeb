@@ -81,7 +81,19 @@ Page({
       url: '../../pages/addarticle/addarticle?gongindex=' + index
     })
   },
-
+  // 获取授权
+  sendmessage:function (event) {
+    //获取订阅消息授权
+    wx.requestSubscribeMessage({
+      tmplIds: ['igZeDkJvQEBeKPY4KTN2bTaXbZYi6M6Dm163XGxbwhE'],
+      success (res) {
+        console.log('获取订阅消息授权')
+       },
+       fail:function (res) {
+         console.log('获取授权错误')
+       }
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -91,6 +103,26 @@ Page({
         hasUserInfo:true,
     })
   }
+
+
+  // wx.request({
+  //   url: HTTP+'gettoken',
+  //   data: {
+     
+  //   },
+  //   header: {
+  //   'content-type': 'application/json' // 默认值
+  //   },
+  //   success (res) {
+  //   console.log(res.data)
+  //   // wx.setStorageSync('openid', res.data.openid)
+  //   },
+  //   fail:function () {
+  //     console.log('获取网络数据失败')
+  //   }
+  // }
+  // )
+
     wx.login({
       success (res) {
         if (res.code) {  
@@ -106,6 +138,7 @@ Page({
             success (res) {
             console.log(res.data)
             wx.setStorageSync('openid', res.data.openid)
+            wx.setStorageSync('token', res.data.access_token)
             },
             fail:function () {
               console.log('获取网络数据失败')

@@ -44,6 +44,16 @@ page{
   border-radius: 500px;
   box-shadow: 4px 1px 1px #cccccc;
 }
+.postleft {
+  float: left;
+  position: fixed;
+  bottom: 40px;
+  left: 40px;  
+  border: 0 solid #ffffff;
+  border-radius: 500px;
+  box-shadow: 4px 1px 1px #cccccc;
+}
+
 
 .userinfo-avatar {
   width: 128rpx;

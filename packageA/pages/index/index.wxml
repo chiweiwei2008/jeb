@@ -36,5 +36,6 @@
 	</block>
 		<!-- 悬浮后台图标 -->
 	<icon type="info" size="50" class="post" bindtap="registration" />
-
+		<!-- 授权按钮 -->
+	<icon type="success" size="50" class="postleft" bindtap="sendmessage" />
 </block>
