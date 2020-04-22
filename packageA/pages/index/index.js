@@ -85,7 +85,7 @@ Page({
   sendmessage:function (event) {
     //获取订阅消息授权
     wx.requestSubscribeMessage({
-      tmplIds: ['igZeDkJvQEBeKPY4KTN2bTaXbZYi6M6Dm163XGxbwhE'],
+      tmplIds: ['igZeDkJvQEBeKPY4KTN2bTaXbZYi6M6Dm163XGxbwhE', '_mgeo4_TaTaYSq4hKYj7O81dcSjr3PXJezbeduzNBQU'],
       success (res) {
         console.log('获取订阅消息授权')
        },

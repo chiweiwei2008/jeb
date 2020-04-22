@@ -56,9 +56,16 @@ Page({
       },
    //写留言
    writemessage: function () {
-    var that = this;
-    wx: wx.navigateTo({//this.data.title  this.data.no
-      url: '../../pages/addmessage/addmessage'
+    wx.requestSubscribeMessage({
+      tmplIds: ['igZeDkJvQEBeKPY4KTN2bTaXbZYi6M6Dm163XGxbwhE', '_mgeo4_TaTaYSq4hKYj7O81dcSjr3PXJezbeduzNBQU'],
+      success (res) {
+        wx: wx.navigateTo({//this.data.title  this.data.no
+          url: '../../pages/addmessage/addmessage'
+        })
+       },
+       fail:function (res) {
+         console.log('获取授权错误')
+       }
     })
   },
   //获取文章信息
@@ -213,6 +220,34 @@ Page({
         hasUserInfo:true,
     })
   }
+  wx.login({
+    success (res) {
+      if (res.code) {  
+        //发起网络请求
+        wx.request({
+          url: HTTP+'onlogin',
+          data: {
+            code: res.code
+          },
+          header: {
+          'content-type': 'application/json' // 默认值
+          },
+          success (res) {
+          console.log(res.data)
+          wx.setStorageSync('openid', res.data.openid)
+          wx.setStorageSync('token', res.data.access_token)
+          },
+          fail:function () {
+            console.log('获取网络数据失败')
+          }
+        }
+        )
+        
+      } else {
+        console.log('登录失败！' + res.errMsg)
+      }
+    }
+  })
     this.getarticle(options.articleid)
     this.getChooseCotent(options.articleid)
 
